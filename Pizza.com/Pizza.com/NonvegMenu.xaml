@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="Pizza.com.NonvegMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Pizza.com"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+     d:DesignWidth="600"
+    d:DesignHeight="400">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Headers-->
+        <StackPanel  Grid.ColumnSpan="2"  Background="Blue" Orientation="Horizontal">
+            <Image Source="Images/logo.jpeg" Height="120" Margin="5"/>
+            <TextBlock Text="pizza.com"
+                       FontSize="60"
+                       FontWeight="ExtraBold"
+                       VerticalAlignment="Bottom"
+                       Foreground="White"
+                       Margin="20"
+                       />
+            <TextBlock Text="Version 1.1"
+                       FontSize="20"
+                       VerticalAlignment="Bottom"
+                       Foreground="White"
+                       Margin="0 0 0 25"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="NON VEG MENU"
+                       Margin="10,10,0,0"
+                       FontSize="45"
+                       Foreground="Red"
+                       FontWeight="SemiBold"/>
+            <ListView Grid.Column="0" x:Name="VegMenuList" Height="400">
+               
+                <CheckBox x:Name="nchkbox1" Margin="0,20,0,0" Content="Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox2" Margin="0,20,0,0" Content="Cheese And Tomato Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox3" Margin="0,20,0,0" Content="Spicy Triple Tango" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox4" Margin="0,20,0,0" Content="Double Cheese Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox5" Margin="0,20,0,0" Content="Mexican Green Wave" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox6" Margin="0,20,0,0" Content="FarmHouse" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox7" Margin="0,20,0,0" Content="Veggie Paradise" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox8" Margin="0,20,0,0" Content="Pepper Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox9" Margin="0,20,0,0" Content="Peppy Paneer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <CheckBox x:Name="nchkbox10" Margin="0,20,0,0" Content="Dulex Veggie" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+            </ListView>
+
+        </StackPanel>
+
+        <Button Content="Back" 
+                Grid.Column="1" Grid.Row="1" 
+                Margin="40,170,0,0"  
+                x:Name="ClickButton" 
+                Width="124" Height="85" 
+                Background="Blue" 
+                Foreground="White"
+                Click="BackButtonNonVegClick"  VerticalAlignment="Top"/>
+   
+
+
+    </Grid>
+</Page>
