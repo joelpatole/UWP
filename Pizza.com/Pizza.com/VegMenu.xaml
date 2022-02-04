@@ -45,20 +45,21 @@
             <TextBlock Text="VEG MENU"
                        Margin="10,10,0,0"
                        FontSize="45"
-                       Foreground="Green"
+                       Foreground="ForestGreen"
                        FontWeight="SemiBold"/>
-            <ListView Grid.Column="0" x:Name="VegMenuList" Height="400">
+            <ListView SelectionMode="Multiple" Grid.Column="0" x:Name="VegMenuList" Height="400" SelectionChanged="VegMenuList_SelectionChanged">
+
                 
-                <CheckBox x:Name="chkbox1" Margin="0,20,0,0" Content="Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox2" Margin="0,20,0,0" Content="Cheese And Tomato Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox3" Margin="0,20,0,0" Content="Spicy Triple Tango" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox4" Margin="0,20,0,0" Content="Double Cheese Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox5" Margin="0,20,0,0" Content="Mexican Green Wave" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox6" Margin="0,20,0,0" Content="FarmHouse" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox7" Margin="0,20,0,0" Content="Veggie Paradise" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox8" Margin="0,20,0,0" Content="Pepper Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox9" Margin="0,20,0,0" Content="Peppy Paneer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox10" Margin="0,20,0,0" Content="Dulex Veggie" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
+                <TextBlock x:Name="t1" Margin="0,20,0,0" Text="Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t2" Margin="0,20,0,0" Text="Cheese And Tomato Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t3" Margin="0,20,0,0" Text="Spicy Triple Tango" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t4" Margin="0,20,0,0" Text="Double Cheese Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t5" Margin="0,20,0,0" Text="Mexican Green Wave" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t6" Margin="0,20,0,0" Text="FarmHouse" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t7" Margin="0,20,0,0" Text="Veggie Paradise" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t8" Margin="0,20,0,0" Text="Pepper Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t9" Margin="0,20,0,0" Text="Peppy Paneer" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="t10" Margin="0,20,0,0" Text="Dulex Veggie" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
             </ListView>
 
         </StackPanel>
@@ -66,11 +67,19 @@
         <Button Content="Back" 
                 Grid.Column="1" Grid.Row="1" 
                 Margin="158,224,0,0"  
-                x:Name="ClickButton" 
+                x:Name="ClickBackButton" 
                 Width="124" Height="85" 
                 Background="Blue" 
                 Foreground="White"
                 Click="BackButtonVegClick" VerticalAlignment="Top"/>
+        <Button Content="Add to cart"
+                Margin="400,0,0,30"
+                Grid.Column="1" Grid.Row="1"
+                x:Name="ClickAddButton"
+                Width="124" Height="85"
+                Background="Blue"
+                Foreground="White"
+                Click="AddButtonVegClick"/>
 
 
 
