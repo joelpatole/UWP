@@ -47,24 +47,30 @@
                        FontSize="45"
                        Foreground="ForestGreen"
                        FontWeight="SemiBold"/>
-            <ListView SelectionMode="Multiple" Grid.Column="0" x:Name="VegMenuList" Height="400" SelectionChanged="VegMenuList_SelectionChanged">
-
+            <ListBox SelectionMode="Extended" Grid.Column="0" 
+                     x:Name="VegMenuList" 
+                      Height="400" 
+                        SelectionChanged="VegMenuList_SelectionChanged">
+                      <ListBox.ItemTemplate>
+                        <DataTemplate x:Name="PizzaListDataTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=PizzaName}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                                <TextBlock Text=" _ "/>
+                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text=".Rs" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Path=PizzaDescription}"/>
+                        </StackPanel>
+                        
+                        </DataTemplate>
+                       </ListBox.ItemTemplate>
                 
-                <TextBlock x:Name="t1" Margin="0,20,0,0" Text="Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t2" Margin="0,20,0,0" Text="Cheese And Tomato Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t3" Margin="0,20,0,0" Text="Spicy Triple Tango" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t4" Margin="0,20,0,0" Text="Double Cheese Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t5" Margin="0,20,0,0" Text="Mexican Green Wave" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t6" Margin="0,20,0,0" Text="FarmHouse" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t7" Margin="0,20,0,0" Text="Veggie Paradise" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t8" Margin="0,20,0,0" Text="Pepper Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t9" Margin="0,20,0,0" Text="Peppy Paneer" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-                <TextBlock x:Name="t10" Margin="0,20,0,0" Text="Dulex Veggie" FontStyle="Italic" FontSize="30" Foreground="Black"></TextBlock>
-            </ListView>
+            </ListBox>
 
         </StackPanel>
 
-        <Button Content="Back" 
+        <Button Content="Back"
                 Grid.Column="1" Grid.Row="1" 
                 Margin="158,224,0,0"  
                 x:Name="ClickBackButton" 
@@ -80,6 +86,27 @@
                 Background="Blue"
                 Foreground="White"
                 Click="AddButtonVegClick"/>
+
+        <ListView x:Name="SelectedPizzaListView" 
+                  Grid.Column="1" HorizontalAlignment="Left" Height="122" 
+                  Margin="41,80,0,0" Grid.Row="1" 
+                  VerticalAlignment="Top" Width="500" BorderBrush="Black"
+                  BorderThickness="1"
+                  DisplayMemberPath="PizzaName"
+                  />
+        <TextBlock x:Name="UserSelectedTitle" 
+                 FontSize="20"
+                 Foreground="Blue"
+                 FontWeight="Medium"
+                 Grid.Column="1" 
+                 HorizontalAlignment="Left" 
+                 Height="40"
+                 Margin="43,40,0,0" 
+                 Grid.Row="1" 
+                 Text="Your Selected Pizzas" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="200"/>
 
 
 

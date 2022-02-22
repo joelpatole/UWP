@@ -10,17 +10,37 @@ namespace Pizza.com.Model
 {
     public class Pizza1 : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public String Pname;
-        public int Pcost;
-        public String Pdesc;
+        public Pizza1(string pname, int cost, string pDesc) 
+        {
+            this.PizzaName = pname;
+            this.PizzaPrice = cost;
+            this.PizzaDescription = pDesc;
+            PNameAndCost = pname + "  " + cost+"rs";
+        }
 
-        public String PizzaName
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string Pname;
+        public int Pcost;
+        public string Pdesc;
+        public string PNameAndCost;
+
+        public string PizzaNameAndCost 
+        {
+            get => PNameAndCost;
+            set  
+            {
+                Pname = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PizzaNameAndCost)));
+            }
+        }
+        public string PizzaName
         {
             get => Pname;
             set
             {
                 Pname = value;
+                if (Pcost != 0)
+                    PNameAndCost = Pname + "  " + Pcost+"rs";  
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PizzaName)));           
             }
         }
@@ -31,11 +51,13 @@ namespace Pizza.com.Model
             set
             {
                 Pcost = value;
+                if (!String.IsNullOrEmpty(Pname))
+                    PNameAndCost = Pname + "  " + Pcost+"rs";
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PizzaPrice)));
             }
         }
 
-        public String PizzaDescription
+        public string PizzaDescription
         {
             get => Pdesc;
             set
@@ -45,5 +67,6 @@ namespace Pizza.com.Model
             }
         }
 
+       
     }
 }

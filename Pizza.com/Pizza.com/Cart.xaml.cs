@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Pizza.com.Model;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,41 +24,26 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class Cart : Page
     {
-        List<Pizza1> pizzas =  new List<Pizza1>();          
+        //public static Cart instance; 
+        //<Pizza1> pizzas =  new List<Pizza1>();
+        ObservableCollection<Pizza1> selectedItems = new ObservableCollection<Pizza1>();
         public Cart()
         {
-            //pizzas = pizzaList;
             this.InitializeComponent();
-            this.Loading += Cart_Loading; //this will load the data(customers)
             this.Loaded += Cart_Loaded;
-            //this.OnNavigatedTo += onNavigatedTo;
-        }
+        //this.OnNavigatedTo += onNavigatedTo;
+    }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
-        }
-
-        private void Cart_Loading(FrameworkElement sender, object args)
-        {
-            var a = args as List<Pizza1>;
+           selectedItems = (ObservableCollection<Pizza1>)e.Parameter; 
         }
 
         private void Cart_Loaded(object sender, RoutedEventArgs e)
         {
             cartListView.Items.Clear();
 
-            List<Pizza1> cart_items = null;
-            cart_items = new List<Pizza1>
-                    {
-                      new Pizza1{PizzaName="Thomas",PizzaPrice=506,PizzaDescription="tasty"},
-                      new Pizza1{PizzaName="Anna",PizzaPrice=345, PizzaDescription="very tasty"},
-                      new Pizza1{PizzaName="Thomas",PizzaPrice=506,PizzaDescription="tasty"},
-                      new Pizza1{PizzaName="Thomas",PizzaPrice=506,PizzaDescription="tasty"},
-                      new Pizza1{PizzaName="Thomas",PizzaPrice=506,PizzaDescription="tasty"},
-                      new Pizza1{PizzaName="Thomas",PizzaPrice=506,PizzaDescription="tasty" }
-                    };
-            foreach (var pizza in cart_items)
+            foreach (var pizza in selectedItems)
             {
                 cartListView.Items.Add(pizza);
             }

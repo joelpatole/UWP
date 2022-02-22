@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Pizza.com.Model;
+using Pizza.com.DataProvider;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,12 +25,28 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class VegMenu : Page
     {
-        List<Pizza1> selectedItem = new List<Pizza1>();
+        
+        ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+        PizzaDataProvider pdp = new PizzaDataProvider();
         public VegMenu()
         {
             this.InitializeComponent();
-            this.SizeChanged += VegMenu_SizeChanged;      
-                
+            this.SizeChanged += VegMenu_SizeChanged;
+            this.Loaded += VegMenu_Loaded;
+            //this.DataContext = PizzaList;    
+        }
+
+        private void VegMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+            //VegMenuList.Items.Clear();
+            var a = pdp.GetPizzaList();
+
+            /*foreach (var p in pizzaList) 
+            {
+                VegMenuList.Items.Add(p);
+            }*/
+            VegMenuList.ItemsSource = a;
+
         }
 
         private void VegMenu_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -52,26 +70,24 @@ namespace Pizza.com
 
         private void AddButtonVegClick(object sender, RoutedEventArgs e)
         {
-            //Cart cart = new Cart(selectedItem);
-            
-            this.Frame.Navigate(typeof(Cart),selectedItem);
+            this.Frame.Navigate(typeof(Cart), PizzaList);
 
         }
 
         private void VegMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (var item in e.AddedItems.OfType<Model.Pizza1>()) 
+            Pizza1 item = ((Pizza1)VegMenuList.SelectedItem);
+            
+            if (PizzaList.Contains(item))
             {
-                selectedItem.Add(item);       
+                PizzaList.Remove(item);
+                SelectedPizzaListView.Items.Remove(item);
+            }
+            else 
+            {
+                PizzaList.Add(item);
+                SelectedPizzaListView.Items.Add(item);
             }
         }
-        /* private void UpdateCart()
-{ 
-Cart cart=cartListview.SeletedItem as Cart;
-if(cart!=null)
-{
-
-}
-}*/
     }
 }
