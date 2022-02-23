@@ -41,17 +41,11 @@ namespace Pizza.com
 
         private void Cart_Loaded(object sender, RoutedEventArgs e)
         {
-            // cartListView.Items.Clear();
-            if (selectedItems != null)
+            cartListView.Items.Clear();
+
+            foreach (var pizza in selectedItems)
             {
-                foreach (var pizza in selectedItems)
-                {
-                    cartListView.Items.Add(pizza);
-                }
-            }
-            else
-            {
-                cartListView = null;
+                cartListView.Items.Add(pizza);
             }
         }
 

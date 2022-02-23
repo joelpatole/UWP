@@ -27,6 +27,7 @@ namespace Pizza.com
     {
         
         ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+       //ObservableCollection<Pizza1> selected = new ObservableCollection<Pizza1>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public VegMenu()
         {
@@ -36,10 +37,22 @@ namespace Pizza.com
             //this.DataContext = PizzaList;    
         }
 
+       /* protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            selected = (ObservableCollection<Pizza1>)e.Parameter;
+            navigateFromCart(selected);
+        }
+
+        private void navigateFromCart(ObservableCollection<Pizza1> selectedItm)
+        {
+            throw new NotImplementedException();
+            Pizza1 i = ((Pizza1)VegMenuList.selectedItm);
+        }*/
+
         private void VegMenu_Loaded(object sender, RoutedEventArgs e)
         {
             //VegMenuList.Items.Clear();
-            var a = pdp.GetPizzaList();
+            var a = pdp.GetVegPizzaList();
 
             /*foreach (var p in pizzaList) 
             {

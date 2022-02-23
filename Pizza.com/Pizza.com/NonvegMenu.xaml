@@ -47,30 +47,66 @@
                        FontSize="45"
                        Foreground="Red"
                        FontWeight="SemiBold"/>
-            <ListView Grid.Column="0" x:Name="VegMenuList" Height="400">
-               
-                <CheckBox x:Name="nchkbox1" Margin="0,20,0,0" Content="Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox2" Margin="0,20,0,0" Content="Cheese And Tomato Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox3" Margin="0,20,0,0" Content="Spicy Triple Tango" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox4" Margin="0,20,0,0" Content="Double Cheese Margherita" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox5" Margin="0,20,0,0" Content="Mexican Green Wave" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox6" Margin="0,20,0,0" Content="FarmHouse" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox7" Margin="0,20,0,0" Content="Veggie Paradise" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox8" Margin="0,20,0,0" Content="Pepper Pizza" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox9" Margin="0,20,0,0" Content="Peppy Paneer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="nchkbox10" Margin="0,20,0,0" Content="Dulex Veggie" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-            </ListView>
+            <ListBox SelectionMode="Extended" Grid.Column="0" 
+                     x:Name="NonVegMenuList" 
+                      Height="400" 
+                        SelectionChanged="NonVegMenuList_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:Name="PizzaListDataTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=PizzaName}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                                <TextBlock Text=" _ "/>
+                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="Red" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text=".Rs" Foreground="Red" FontSize="20" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Path=PizzaDescription}"/>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
 
         </StackPanel>
 
-        <Button Content="Back" 
+        <Button Content="Back"
                 Grid.Column="1" Grid.Row="1" 
-                Margin="40,170,0,0"  
-                x:Name="ClickButton" 
+                Margin="158,224,0,0"  
+                x:Name="ClickBackButton" 
                 Width="124" Height="85" 
                 Background="Blue" 
                 Foreground="White"
-                Click="BackButtonNonVegClick"  VerticalAlignment="Top"/>
+                Click="BackButtonNonVegClick" VerticalAlignment="Top"/>
+        <Button Content="Add to cart"
+                Margin="400,0,0,30"
+                Grid.Column="1" Grid.Row="1"
+                x:Name="ClickAddButton"
+                Width="124" Height="85"
+                Background="Blue"
+                Foreground="White"
+                Click="AddButtonNonVegClick"/>
+        
+        <ListView x:Name="SelectedPizzaListView" 
+                  Grid.Column="1" HorizontalAlignment="Left" Height="122" 
+                  Margin="41,80,0,0" Grid.Row="1" 
+                  VerticalAlignment="Top" Width="500" BorderBrush="Black"
+                  BorderThickness="1"
+                  DisplayMemberPath="PizzaName"
+                  />
+        <TextBlock x:Name="UserSelectedTitle" 
+                 FontSize="20"
+                 Foreground="Blue"
+                 FontWeight="Medium"
+                 Grid.Column="1" 
+                 HorizontalAlignment="Left" 
+                 Height="40"
+                 Margin="43,40,0,0" 
+                 Grid.Row="1" 
+                 Text="Your Selected Pizzas" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="200"/>
    
 
 
