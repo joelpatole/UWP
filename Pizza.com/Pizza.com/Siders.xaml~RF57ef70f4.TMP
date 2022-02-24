@@ -55,7 +55,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Path=PizzaName}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
                                 <TextBlock Text=" _ "/>
-                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
                                 <TextBlock Text=".Rs" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
                             </StackPanel>
                             <TextBlock Text="{Binding Path=PizzaDescription}"/>

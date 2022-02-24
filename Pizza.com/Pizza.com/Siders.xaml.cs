@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Pizza.com.Model;
+using Pizza.com.DataProvider;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,14 +25,60 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class Siders : Page
     {
+        ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+        PizzaDataProvider pdp = new PizzaDataProvider();
         public Siders() 
         {
             this.InitializeComponent();
+            this.SizeChanged += SidersMenu_SizeChanged;
+            this.Loaded += SidersMenu_Loaded;
+        }
+
+        private void SidersMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+            //VegMenuList.Items.Clear();
+            var a = pdp.GetSidersList();
+
+            /*foreach (var p in pizzaList) 
+            {
+                VegMenuList.Items.Add(p);
+            }*/
+            SidersMenuList.ItemsSource = a;
+
+        }
+
+        private void SidersMenu_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double newHeightOfWindow = e.NewSize.Height;
+            if (newHeightOfWindow > 0)
+            {
+                SidersMenuList.Height = newHeightOfWindow - 200;
+            }
         }
         private void BackButtonSidersClicked(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        private void SidersMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Pizza1 item = ((Pizza1)SidersMenuList.SelectedItem);
+
+            if (PizzaList.Contains(item))
+            {
+                PizzaList.Remove(item);
+                SelectedPizzaListView.Items.Remove(item);
+            }
+            else
+            {
+                PizzaList.Add(item);
+                SelectedPizzaListView.Items.Add(item);
+            }
+        }
+
+        private void AddButtonSidersClick(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Cart), PizzaList);
+        }
     }
 }

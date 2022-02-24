@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+     d:DesignWidth="600"
+    d:DesignHeight="400">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -43,31 +45,66 @@
                        FontSize="45"
                        Foreground="CadetBlue"
                        FontWeight="SemiBold"/>
-            <ListView Grid.Column="0" x:Name="BeveragesList" Height="400">
+            <ListBox SelectionMode="Extended" Grid.Column="0" 
+                     x:Name="BeveragesMenuList" 
+                      Height="400" 
+                        SelectionChanged="BeveragesList_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:Name="PizzaListDataTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=PizzaName}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                                <TextBlock Text=" _ "/>
+                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="CadetBlue" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text=".Rs" Foreground="CadetBlue" FontSize="20" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Path=PizzaDescription}"/>
+                        </StackPanel>
 
-                <CheckBox x:Name="chkbox1" Margin="0,20,0,0" Content="Virgin Mojito" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox2" Margin="0,20,0,0" Content="Diet Coke" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox3" Margin="0,20,0,0" Content="Frappuccino" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox4" Margin="0,20,0,0" Content="Pina Colada" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox5" Margin="0,20,0,0" Content="Iced Tea" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox6" Margin="0,20,0,0" Content="Apple Tizer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox7" Margin="0,20,0,0" Content="Grape Tizer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox8" Margin="0,20,0,0" Content="Cold Coffee" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox9" Margin="0,20,0,0" Content="Cold Coffee with Icecream" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-                <CheckBox x:Name="chkbox10" Margin="0,20,0,0" Content="Breezer" FontStyle="Italic" FontSize="30" Foreground="Black"></CheckBox>
-            </ListView>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
 
         </StackPanel>
-        <Button Content="Back" 
+        
+        <Button Content="Back"
                 Grid.Column="1" Grid.Row="1" 
                 Margin="158,224,0,0"  
-                x:Name="ClickButton" 
+                x:Name="ClickBackButton" 
                 Width="124" Height="85" 
                 Background="Blue" 
                 Foreground="White"
-                Click="BackButtonBeveragesClick"
-                VerticalAlignment="Top"/>
+                Click="BackButtonBeveragesClick" VerticalAlignment="Top"/>
+        <Button Content="Add to cart"
+                Margin="400,0,0,30"
+                Grid.Column="1" Grid.Row="1"
+                x:Name="ClickAddButton"
+                Width="124" Height="85"
+                Background="Blue"
+                Foreground="White"
+                Click="AddButtonBeveragesClick"/>
 
+        <ListView x:Name="SelectedPizzaListView" 
+                  Grid.Column="1" HorizontalAlignment="Left" Height="122" 
+                  Margin="41,80,0,0" Grid.Row="1" 
+                  VerticalAlignment="Top" Width="500" BorderBrush="Black"
+                  BorderThickness="1"
+                  DisplayMemberPath="PizzaName"
+                  />
+        <TextBlock x:Name="UserSelectedTitle" 
+                 FontSize="20"
+                 Foreground="Blue"
+                 FontWeight="Medium"
+                 Grid.Column="1" 
+                 HorizontalAlignment="Left" 
+                 Height="40"
+                 Margin="43,40,0,0" 
+                 Grid.Row="1" 
+                 Text="Your Selected Beverages" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="300"/>
 
 
     </Grid>

@@ -38,5 +38,27 @@ namespace Pizza.com.DataProvider
 
             return pizzaList;
         }
+
+        public ObservableCollection<Pizza1> GetBeveragesList()
+        {
+            pizzaList.Add(new Pizza1("Virgin mojito", 60, "Refreshing lime juice and mint leaves combo"));
+            pizzaList.Add(new Pizza1("Creamy mango shake", 100, "Great mango taste topped with whipped cream"));
+            pizzaList.Add(new Pizza1("Diet coke", 80, "For people loving 0 calory drinks"));
+            pizzaList.Add(new Pizza1("Pepsi", 60, "Refreshing carbonated drink"));
+            pizzaList.Add(new Pizza1("Ice tea", 60, "Refreshing and energizing"));
+
+            return pizzaList;
+        }
+
+        public ObservableCollection<Pizza1> GetSidersList()
+        {
+            pizzaList.Add(new Pizza1("Choco-Lava cake", 100, "Indulgent molten lava inside chocolate cake"));
+            pizzaList.Add(new Pizza1("Garlic Breadsticks with dip", 100, "Your perfect pizza partner"));
+            pizzaList.Add(new Pizza1("Chocolate Mousse cake", 100, "Sweet temptation"));
+            pizzaList.Add(new Pizza1("Potato bites", 70, "Crisp and golden, flavourfull cheese burst"));
+            pizzaList.Add(new Pizza1("Maggi", 50, "No description needed!"));
+
+            return pizzaList;
+        }
     }
 }
