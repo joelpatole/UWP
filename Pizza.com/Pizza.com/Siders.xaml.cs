@@ -25,7 +25,7 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class Siders : Page
     {
-        ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+        ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public Siders() 
         {
@@ -62,7 +62,7 @@ namespace Pizza.com
 
         private void SidersMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Pizza1 item = ((Pizza1)SidersMenuList.SelectedItem);
+            Model.Product item = ((Model.Product)SidersMenuList.SelectedItem);
 
             if (PizzaList.Contains(item))
             {

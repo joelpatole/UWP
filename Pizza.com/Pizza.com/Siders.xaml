@@ -53,12 +53,12 @@
                     <DataTemplate x:Name="PizzaListDataTemplate">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=PizzaName}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                                <TextBlock Text="{Binding Path=Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
                                 <TextBlock Text=" _ "/>
-                                <TextBlock Text="{Binding Path=PizzaPrice}" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text="{Binding Path=Price}" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
                                 <TextBlock Text=".Rs" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
                             </StackPanel>
-                            <TextBlock Text="{Binding Path=PizzaDescription}"/>
+                            <TextBlock Text="{Binding Path=Description}"/>
                         </StackPanel>
 
                     </DataTemplate>
@@ -90,7 +90,7 @@
                   Margin="41,80,0,0" Grid.Row="1" 
                   VerticalAlignment="Top" Width="500" BorderBrush="Black"
                   BorderThickness="1"
-                  DisplayMemberPath="PizzaName"
+                  DisplayMemberPath="Name"
                   />
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"

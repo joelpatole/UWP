@@ -26,7 +26,8 @@ namespace Pizza.com
     {
         //public static Cart instance; 
         //<Pizza1> pizzas =  new List<Pizza1>();
-        ObservableCollection<Pizza1> selectedItems = new ObservableCollection<Pizza1>();
+        
+        ProductCart productCart = ProductCart.GetInstance;
         public Cart()
         {
             this.InitializeComponent();
@@ -36,17 +37,22 @@ namespace Pizza.com
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           selectedItems = (ObservableCollection<Pizza1>)e.Parameter; 
+            var param = (ObservableCollection<Model.Product>)e.Parameter;
+            foreach (var item in param) 
+            {
+                productCart.AddItemToCart(item);
+            }
         }
 
         private void Cart_Loaded(object sender, RoutedEventArgs e)
         {
             // cartListView.Items.Clear();
-            if (selectedItems != null)
+            if (productCart.GetItemCount() > 0)
             {
-                foreach (var pizza in selectedItems)
+                var allItemsInCart = productCart.GetCartItems();
+                foreach (var item in allItemsInCart)
                 {
-                    cartListView.Items.Add(pizza);
+                    cartListView.Items.Add(item);
                 }
             }
             else

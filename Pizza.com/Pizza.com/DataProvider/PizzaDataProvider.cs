@@ -10,55 +10,61 @@ namespace Pizza.com.DataProvider
 {
     public class PizzaDataProvider
     {
-        ObservableCollection<Pizza1> pizzaList;
+        ObservableCollection<Model.Product> pizzaList;
+        ObservableCollection<Model.Product> nonVegPizzaList;
+        ObservableCollection<Model.Product> slider;
+        ObservableCollection<Model.Product> beverages;
 
         public PizzaDataProvider() 
         {
-            pizzaList = new ObservableCollection<Pizza1>();
+            pizzaList = new ObservableCollection<Model.Product>();
+            nonVegPizzaList = new ObservableCollection<Model.Product>();
+            slider = new ObservableCollection<Model.Product>();
+            beverages = new ObservableCollection<Model.Product>(); 
         }
 
-        public ObservableCollection<Pizza1> GetVegPizzaList() 
+        public ObservableCollection<Model.Product> GetVegPizzaList() 
         {
-            pizzaList.Add(new Pizza1("Margherita", 99, "classic delight with 100% mozzarella cheese"));
-            pizzaList.Add(new Pizza1("Farmhouse", 250, "Delightful combo of onion, capsicum and mushrooms"));
-            pizzaList.Add(new Pizza1("Paneer Delight", 250, "Flavourful trio of juicy paneer,capsicum and paprika"));
-            pizzaList.Add(new Pizza1("Veggie paradise", 300, "Foresum of golden corn,olives,capsicum and paprika"));
-            pizzaList.Add(new Pizza1("Delux Veggie", 300, "Veg delight with grilled mushroom and juicy paneer"));
+            pizzaList.Add(new Model.Product("Margherita", 99, "classic delight with 100% mozzarella cheese", Constants.ProductTypes.VegPizza));
+            pizzaList.Add(new Model.Product("Farmhouse", 250, "Delightful combo of onion, capsicum and mushrooms", Constants.ProductTypes.VegPizza));
+            pizzaList.Add(new Model.Product("Paneer Delight", 250, "Flavourful trio of juicy paneer,capsicum and paprika", Constants.ProductTypes.VegPizza));
+            pizzaList.Add(new Model.Product("Veggie paradise", 300, "Foresum of golden corn,olives,capsicum and paprika", Constants.ProductTypes.VegPizza));
+            pizzaList.Add(new Model.Product("Delux Veggie", 300, "Veg delight with grilled mushroom and juicy paneer", Constants.ProductTypes.VegPizza));
 
             return pizzaList;
         }
 
-        public ObservableCollection<Pizza1> GetNonVegPizzaList()
+        public ObservableCollection<Model.Product> GetNonVegPizzaList()
         {
-            pizzaList.Add(new Pizza1("Chicken Sausage", 110, "American classic! herbed chichen sausage on pizza"));
-            pizzaList.Add(new Pizza1("NonVeg Loaded", 250, "Trio of chicken sausage,pepper barbeque and peri peri chicken"));
-            pizzaList.Add(new Pizza1("Chicken golden Delight", 280, "Pepper barbeque chicken with golden corn"));
-            pizzaList.Add(new Pizza1("Chicken Dominator", 350, "Loaded with chicken tikka and grilled chicken bites"));
-            pizzaList.Add(new Pizza1("Chicken Papperoni", 350, "Relish the flavour of chicken pepperoni with loaded cheese"));
+            nonVegPizzaList.Add(new Model.Product("Chicken Sausage", 110, "American classic! herbed chichen sausage on pizza", Constants.ProductTypes.NonVegPizza));
+            nonVegPizzaList.Add(new Model.Product("NonVeg Loaded", 250, "Trio of chicken sausage,pepper barbeque and peri peri chicken", Constants.ProductTypes.NonVegPizza));
+            nonVegPizzaList.Add(new Model.Product("Chicken golden Delight", 280, "Pepper barbeque chicken with golden corn", Constants.ProductTypes.NonVegPizza));
+            nonVegPizzaList.Add(new Model.Product("Chicken Dominator", 350, "Loaded with chicken tikka and grilled chicken bites", Constants.ProductTypes.NonVegPizza));
+            nonVegPizzaList.Add(new Model.Product("Chicken Papperoni", 350, "Relish the flavour of chicken pepperoni with loaded cheese", Constants.ProductTypes.NonVegPizza));
 
-            return pizzaList;
+            return nonVegPizzaList;
         }
 
-        public ObservableCollection<Pizza1> GetBeveragesList()
+        public ObservableCollection<Model.Product> GetBeveragesList()
         {
-            pizzaList.Add(new Pizza1("Virgin mojito", 60, "Refreshing lime juice and mint leaves combo"));
-            pizzaList.Add(new Pizza1("Creamy mango shake", 100, "Great mango taste topped with whipped cream"));
-            pizzaList.Add(new Pizza1("Diet coke", 80, "For people loving 0 calory drinks"));
-            pizzaList.Add(new Pizza1("Pepsi", 60, "Refreshing carbonated drink"));
-            pizzaList.Add(new Pizza1("Ice tea", 60, "Refreshing and energizing"));
+            beverages.Add(new Model.Product("Virgin mojito", 60, "Refreshing lime juice and mint leaves combo", Constants.ProductTypes.Beverages));
+            beverages.Add(new Model.Product("Creamy mango shake", 100, "Great mango taste topped with whipped cream", Constants.ProductTypes.Beverages));
+            beverages.Add(new Model.Product("Diet coke", 80, "For people loving 0 calory drinks", Constants.ProductTypes.Beverages));
+            beverages.Add(new Model.Product("Pepsi", 60, "Refreshing carbonated drink", Constants.ProductTypes.Beverages));
+            beverages.Add(new Model.Product("Ice tea", 60, "Refreshing and energizing", Constants.ProductTypes.Beverages));
 
-            return pizzaList;
+            return beverages;
         }
 
-        public ObservableCollection<Pizza1> GetSidersList()
+        public ObservableCollection<Model.Product> GetSidersList()
         {
-            pizzaList.Add(new Pizza1("Choco-Lava cake", 100, "Indulgent molten lava inside chocolate cake"));
-            pizzaList.Add(new Pizza1("Garlic Breadsticks with dip", 100, "Your perfect pizza partner"));
-            pizzaList.Add(new Pizza1("Chocolate Mousse cake", 100, "Sweet temptation"));
-            pizzaList.Add(new Pizza1("Potato bites", 70, "Crisp and golden, flavourfull cheese burst"));
-            pizzaList.Add(new Pizza1("Maggi", 50, "No description needed!"));
+            slider.Add(new Model.Product("Choco-Lava cake", 100, "Indulgent molten lava inside chocolate cake", Constants.ProductTypes.Sliders));
+            slider.Add(new Model.Product("Garlic Breadsticks with dip", 100, "Your perfect pizza partner", Constants.ProductTypes.Sliders));
+            slider.Add(new Model.Product("Chocolate Mousse cake", 100, "Sweet temptation", Constants.ProductTypes.Sliders));
+            slider.Add(new Model.Product("Potato bites", 70, "Crisp and golden, flavourfull cheese burst", Constants.ProductTypes.Sliders));
+            slider.Add(new Model.Product("Maggi", 50, "No description needed!", Constants.ProductTypes.Sliders));
 
-            return pizzaList;
+            return slider;
         }
     }
 }

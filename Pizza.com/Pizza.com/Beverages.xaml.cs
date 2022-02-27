@@ -25,7 +25,7 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class Beverages: Page
     {
-        ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+        ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public Beverages()
         {
@@ -64,7 +64,7 @@ namespace Pizza.com
 
         private void BeveragesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Pizza1 item = ((Pizza1)BeveragesMenuList.SelectedItem);
+            Model.Product item = ((Model.Product)BeveragesMenuList.SelectedItem);
 
             if (PizzaList.Contains(item))
             {

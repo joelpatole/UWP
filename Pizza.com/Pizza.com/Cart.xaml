@@ -47,7 +47,7 @@
                        Foreground="DarkBlue"
                        FontWeight="SemiBold"/>
             <ListView Grid.Row="1" x:Name="cartListView"
-                      DisplayMemberPath="PizzaName"
+                      DisplayMemberPath="Name"
                       SelectionChanged="cartListView_SelectionChanged">
             </ListView>
             <Button Content="Back to Menu"

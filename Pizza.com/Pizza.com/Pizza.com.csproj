@@ -125,8 +125,11 @@
     <Compile Include="Cart.xaml.cs">
       <DependentUpon>Cart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="DataProvider\PizzaDataProvider.cs" />
-    <Compile Include="Model\Pizza.cs" />
+    <Compile Include="IProduct.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductCart.cs" />
     <Compile Include="Siders.xaml.cs">
       <DependentUpon>Siders.xaml</DependentUpon>
     </Compile>

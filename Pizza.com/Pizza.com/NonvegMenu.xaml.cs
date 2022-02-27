@@ -25,7 +25,7 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class NonvegMenu : Page
     {
-        ObservableCollection<Pizza1> PizzaList = new ObservableCollection<Pizza1>();
+        ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public NonvegMenu()
         {
@@ -63,7 +63,7 @@ namespace Pizza.com
 
         private void NonVegMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Pizza1 item = ((Pizza1)NonVegMenuList.SelectedItem);
+            Model.Product item = ((Model.Product)NonVegMenuList.SelectedItem);
 
             if (PizzaList.Contains(item))
             {
