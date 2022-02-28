@@ -37,6 +37,8 @@ namespace Pizza.com
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e == null || e.Parameter == null)
+                return;
             var param = (ObservableCollection<Model.Product>)e.Parameter;
             foreach (var item in param) 
             {

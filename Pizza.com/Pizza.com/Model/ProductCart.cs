@@ -11,15 +11,29 @@ namespace Pizza.com.Model
     public sealed class ProductCart
     {
         private static ProductCart _instance = null;
-        ObservableCollection<Model.Product> selectedItems;
+        private static ObservableCollection<Model.Product> selectedItems;
+        private static readonly object threadLock = new object();
+        private static int count = 0;
 
-        ObservableCollection<IProduct> productCart;
+
         public static ProductCart GetInstance
         {
             get 
             {
                 if (_instance == null) 
-                    return new ProductCart();
+                {
+                    //This lock is used for thread safety. This is not required int his applicaiton.
+                    //but implemented for the sake of completeness.
+                    lock (threadLock) 
+                    {
+                        if (_instance == null) 
+                        {
+                            _instance = new ProductCart();
+                            return _instance;
+                        }    
+                    }
+                }
+                
                 
                 return _instance;
             }
@@ -49,7 +63,6 @@ namespace Pizza.com.Model
 
         private ProductCart() 
         {
-            productCart = new ObservableCollection<IProduct>();
             selectedItems = new ObservableCollection<Model.Product>();
         }
     }

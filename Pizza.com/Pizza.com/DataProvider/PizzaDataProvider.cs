@@ -10,14 +10,14 @@ namespace Pizza.com.DataProvider
 {
     public class PizzaDataProvider
     {
-        ObservableCollection<Model.Product> pizzaList;
+        ObservableCollection<Model.Product> vegPizzaList;
         ObservableCollection<Model.Product> nonVegPizzaList;
         ObservableCollection<Model.Product> slider;
         ObservableCollection<Model.Product> beverages;
 
         public PizzaDataProvider() 
         {
-            pizzaList = new ObservableCollection<Model.Product>();
+            vegPizzaList = new ObservableCollection<Model.Product>();
             nonVegPizzaList = new ObservableCollection<Model.Product>();
             slider = new ObservableCollection<Model.Product>();
             beverages = new ObservableCollection<Model.Product>(); 
@@ -25,13 +25,13 @@ namespace Pizza.com.DataProvider
 
         public ObservableCollection<Model.Product> GetVegPizzaList() 
         {
-            pizzaList.Add(new Model.Product("Margherita", 99, "classic delight with 100% mozzarella cheese", Constants.ProductTypes.VegPizza));
-            pizzaList.Add(new Model.Product("Farmhouse", 250, "Delightful combo of onion, capsicum and mushrooms", Constants.ProductTypes.VegPizza));
-            pizzaList.Add(new Model.Product("Paneer Delight", 250, "Flavourful trio of juicy paneer,capsicum and paprika", Constants.ProductTypes.VegPizza));
-            pizzaList.Add(new Model.Product("Veggie paradise", 300, "Foresum of golden corn,olives,capsicum and paprika", Constants.ProductTypes.VegPizza));
-            pizzaList.Add(new Model.Product("Delux Veggie", 300, "Veg delight with grilled mushroom and juicy paneer", Constants.ProductTypes.VegPizza));
+            vegPizzaList.Add(new Model.Product("Margherita", 99, "classic delight with 100% mozzarella cheese", Constants.ProductTypes.VegPizza));
+            vegPizzaList.Add(new Model.Product("Farmhouse", 250, "Delightful combo of onion, capsicum and mushrooms", Constants.ProductTypes.VegPizza));
+            vegPizzaList.Add(new Model.Product("Paneer Delight", 250, "Flavourful trio of juicy paneer,capsicum and paprika", Constants.ProductTypes.VegPizza));
+            vegPizzaList.Add(new Model.Product("Veggie paradise", 300, "Foresum of golden corn,olives,capsicum and paprika", Constants.ProductTypes.VegPizza));
+            vegPizzaList.Add(new Model.Product("Delux Veggie", 300, "Veg delight with grilled mushroom and juicy paneer", Constants.ProductTypes.VegPizza));
 
-            return pizzaList;
+            return vegPizzaList;
         }
 
         public ObservableCollection<Model.Product> GetNonVegPizzaList()
