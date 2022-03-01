@@ -102,5 +102,14 @@ namespace Pizza.com
                 SelectedPizzaListView.Items.Add(item);
             }
         }
+
+        private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
+        {
+           /* if (PizzaList.Contains(item))
+            {
+                PizzaList.Remove(item);
+                SelectedPizzaListView.Items.Remove(item);
+            }*/
+        }
     }
 }

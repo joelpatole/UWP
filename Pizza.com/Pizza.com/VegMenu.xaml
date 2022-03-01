@@ -89,10 +89,28 @@
         <ListView x:Name="SelectedPizzaListView" 
                   Grid.Column="1" HorizontalAlignment="Left" Height="122" 
                   Margin="41,80,0,0" Grid.Row="1" 
-                  VerticalAlignment="Top" Width="500" BorderBrush="Black"
-                  BorderThickness="1"
-                  DisplayMemberPath="Name"
-                  />
+                  VerticalAlignment="Top" Width="800" BorderBrush="Black"
+                  BorderThickness="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                            <TextBlock Text=" _ "/>
+                            <TextBlock Text="{Binding Path=Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                            <TextBlock Text=".Rs" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <Button Click="DeleteItemFromCart_Click" x:Name="ClickButton" 
+                                Margin="400,0,0,0" HorizontalAlignment="Right">
+                            <SymbolIcon Symbol="Delete"
+                                    x:Name="DeleteItemFromCart"/>
+                        </Button>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"
                  Foreground="Blue"

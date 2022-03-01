@@ -140,6 +140,9 @@
       <DependentUpon>NonvegMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\SlectedProductsList.xaml.cs">
+      <DependentUpon>SlectedProductsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VegMenu.xaml.cs">
       <DependentUpon>VegMenu.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NonvegMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SlectedProductsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

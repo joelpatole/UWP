@@ -24,6 +24,9 @@ namespace Pizza.com.Model
         public int Pcost;
         public string Pdesc;
         public Constants.ProductTypes Ptype;
+        
+        //This property is used to 
+        public int Index { get; set; }
 
         public Constants.ProductTypes Type 
         {
