@@ -86,31 +86,48 @@
                 Foreground="White"
                 Click="AddButtonVegClick"/>
 
+        
         <ListView x:Name="SelectedPizzaListView" 
                   Grid.Column="1" HorizontalAlignment="Left" Height="122" 
                   Margin="41,80,0,0" Grid.Row="1" 
                   VerticalAlignment="Top" Width="800" BorderBrush="Black"
                   BorderThickness="1">
+                
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
-                            <TextBlock Text=" _ "/>
-                            <TextBlock Text="{Binding Path=Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
-                            <TextBlock Text=".Rs" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
-                        </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                                <TextBlock Text=" _ "/>
+                                <TextBlock Text="{Binding Path=Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text=".Rs" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                            <Button Click="IncrementItemCount_Click" x:Name="IncrementCountButton" 
+                                    Margin="350,0,0,0" HorizontalAlignment="Right"
+                                    Tag="{Binding IncrementIndex}">
+                                    <SymbolIcon Symbol="Add"
+                                        x:Name="IncrementSymbol"/>
+                                </Button>
+                            <TextBlock Text="1" FontSize="30" Margin="10,5,5,10"></TextBlock>
+                            <Button Click="DecrementCountButton_Click" x:Name="DecrementCountButton" 
+                                    Margin="10,0,10,0" HorizontalAlignment="Right"
+                                    Tag="{Binding DecrementIndex}">
+                                <SymbolIcon Symbol="Remove"
+                                        x:Name="DecrementSymbol"/>
+                            </Button>
                         <Button Click="DeleteItemFromCart_Click" x:Name="ClickButton" 
-                                Margin="400,0,0,0" HorizontalAlignment="Right">
+                                    Margin="0,0,30,0" HorizontalAlignment="Right"
+                                    Tag="{Binding DeleteIndex}">
                             <SymbolIcon Symbol="Delete"
-                                    x:Name="DeleteItemFromCart"/>
+                                        x:Name="DeleteItemFromCart"/>
                         </Button>
                     </StackPanel>
-
-                </DataTemplate>
+                    </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
+        
+        
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"
                  Foreground="Blue"

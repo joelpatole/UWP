@@ -27,6 +27,9 @@ namespace Pizza.com
     {
         
         ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
+        
+        IDictionary<Model.Product, int> Order = new Dictionary<Model.Product, int>();
+        //ObservableCollection<Model.Product> ProductList = new ObservableCollection<Model.Product>();
        //ObservableCollection<Pizza1> selected = new ObservableCollection<Pizza1>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public VegMenu()
@@ -37,6 +40,14 @@ namespace Pizza.com
             //this.DataContext = PizzaList;    
         }
 
+        private void SetOrder() 
+        {
+            for (int i = 0; i < VegMenuList.Items.Count; i++)
+            {
+                Product p = (Product)VegMenuList.Items[i];
+                p.DeleteIndex = i;
+            }
+        }
        /* protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             selected = (ObservableCollection<Pizza1>)e.Parameter;
@@ -59,6 +70,7 @@ namespace Pizza.com
                 VegMenuList.Items.Add(p);
             }*/
             VegMenuList.ItemsSource = a;
+            SetOrder();
 
         }
 
@@ -93,8 +105,8 @@ namespace Pizza.com
             
             if (PizzaList.Contains(item))
             {
-                PizzaList.Remove(item);
-                SelectedPizzaListView.Items.Remove(item);
+                //PizzaList.Remove(item);
+                //SelectedPizzaListView.Items.Remove(item);
             }
             else 
             {
@@ -105,11 +117,25 @@ namespace Pizza.com
 
         private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
         {
-           /* if (PizzaList.Contains(item))
-            {
-                PizzaList.Remove(item);
-                SelectedPizzaListView.Items.Remove(item);
-            }*/
+            Button btn = (Button)sender;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)VegMenuList.Items[index];
+            SelectedPizzaListView.Items.Remove(pizzaToDelete);
+            if (PizzaList.Contains(pizzaToDelete))
+                PizzaList.Remove(pizzaToDelete);
+            //SetOrder();
+            //SelectedPizzaListView.ItemsSource = null;
+            //SelectedPizzaListView.ItemsSource = list;
+        }
+
+        private void IncrementItemCount_Click(object sender, RoutedEventArgs e) 
+        {
+            
+        }
+
+        private void DecrementCountButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

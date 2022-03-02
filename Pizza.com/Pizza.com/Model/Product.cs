@@ -25,8 +25,12 @@ namespace Pizza.com.Model
         public string Pdesc;
         public Constants.ProductTypes Ptype;
         
-        //This property is used to 
-        public int Index { get; set; }
+        //This property is used to maintain to mark item to be deleted
+        public int DeleteIndex { get; set; }
+        //This property is used to maintain to mark item to be deleted
+        public int IncrementIndex { get; set; }
+        //This property is used to maintain to mark item to be deleted
+        public int DecrementIndex { get; set; }
 
         public Constants.ProductTypes Type 
         {
