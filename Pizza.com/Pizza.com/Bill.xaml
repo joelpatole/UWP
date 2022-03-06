@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Pizza.com.Bill"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Pizza.com"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel  Grid.ColumnSpan="2"  Background="Blue" Orientation="Horizontal">
+            <Image Source="Images/logo.jpeg" Height="120" Margin="5"/>
+            <TextBlock Text="pizza.com"
+                       FontSize="60"
+                       FontWeight="ExtraBold"
+                       VerticalAlignment="Bottom"
+                       Foreground="White"
+                       Margin="20"
+                       />
+            <TextBlock Text="Version 1.1"
+                       FontSize="20"
+                       VerticalAlignment="Bottom"
+                       Foreground="White"
+                       Margin="0 0 0 25"/>
+
+        </StackPanel>
+        <TextBlock Grid.Column="1" 
+                   HorizontalAlignment="Left" 
+                   Margin="121,51,0,0" 
+                   Grid.Row="1" 
+                   TextWrapping="Wrap" 
+                   Text="YOUR BILL" 
+                   FontSize="54" 
+                   FontWeight="SemiBold" 
+                   VerticalAlignment="Top"
+                   Height="94" 
+                   RenderTransformOrigin="-6.423,-1.64" 
+                   Width="325" Foreground="Purple"/>
+        <TextBlock x:Name="scanTextBlock"
+                   Grid.Column="1" 
+                   HorizontalAlignment="Left" 
+                   Margin="1027,30,0,0" 
+                   Grid.Row="1" 
+                   TextWrapping="Wrap" 
+                   Text="SCAN QR FOR PAYMENT"
+                   VerticalAlignment="Top" 
+                   FontSize="48" 
+                   FontFamily="Segoe UI Semibold" 
+                   FontWeight="Bold" Width="329" 
+                   Foreground="Purple"/>
+        <Image x:Name="imageQR" 
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Left" 
+               Margin="1014,156,0,-235" 
+               Grid.Row="1" Width="342" 
+               Source="Images/ImageQR1.jpeg" 
+               RenderTransformOrigin="1.096,0.459"/>
+
+    </Grid>
+</Page>

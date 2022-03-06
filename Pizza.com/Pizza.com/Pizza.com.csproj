@@ -122,12 +122,16 @@
     <Compile Include="Beverages.xaml.cs">
       <DependentUpon>Beverages.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bill.xaml.cs">
+      <DependentUpon>Bill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cart.xaml.cs">
       <DependentUpon>Cart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="DataProvider\PizzaDataProvider.cs" />
     <Compile Include="IProduct.cs" />
+    <Compile Include="Model\ProductOrder.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCart.cs" />
     <Compile Include="Siders.xaml.cs">
@@ -200,6 +204,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Images\backgroundImg.png" />
     <Content Include="Images\Cart.png" />
+    <Content Include="Images\ImageQR1.jpeg" />
     <Content Include="Images\logo.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -215,6 +220,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Beverages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

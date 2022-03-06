@@ -76,5 +76,11 @@ namespace Pizza.com
             chkIsDeveloper.IsChecked = customer?.IsDeveloper;
             chkIsTester.IsChecked = customer?.IsTester;*/
         }
+
+        private void goToBill_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Bill));
+
+        }
     }
 }
