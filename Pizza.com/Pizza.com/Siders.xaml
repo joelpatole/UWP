@@ -88,10 +88,42 @@
         <ListView x:Name="SelectedPizzaListView" 
                   Grid.Column="1" HorizontalAlignment="Left" Height="122" 
                   Margin="41,80,0,0" Grid.Row="1" 
-                  VerticalAlignment="Top" Width="500" BorderBrush="Black"
-                  BorderThickness="1"
-                  DisplayMemberPath="Name"
-                  />
+                  VerticalAlignment="Top" Width="800" BorderBrush="Black"
+                  BorderThickness="1">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Product.Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
+                            <TextBlock Text=" _ "/>
+                            <TextBlock Text="{Binding Path=Product.Price}" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
+                            <TextBlock Text=".Rs" Foreground="RosyBrown" FontSize="20" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <Button Click="IncrementItemCount_Click" x:Name="IncrementCountButton" 
+                                    Margin="350,0,0,0" HorizontalAlignment="Right"
+                                    Tag="{Binding Product.DeleteIndex}">
+                            <SymbolIcon Symbol="Add"
+                                        x:Name="IncrementSymbol"/>
+                        </Button>
+                        <TextBlock Text="{Binding Path=Count}" FontSize="30" Margin="10,5,5,10"></TextBlock>
+                        <Button Click="DecrementCountButton_Click" x:Name="DecrementCountButton" 
+                                    Margin="10,0,10,0" HorizontalAlignment="Right"
+                                    Tag="{Binding Product.DeleteIndex}">
+                            <SymbolIcon Symbol="Remove"
+                                        x:Name="DecrementSymbol"/>
+                        </Button>
+                        <Button Click="DeleteItemFromCart_Click" x:Name="ClickButton" 
+                                    Margin="0,0,30,0" HorizontalAlignment="Right"
+                                    Tag="{Binding Path=Product.DeleteIndex}">
+                            <SymbolIcon Symbol="Delete"
+                                        x:Name="DeleteItemFromCart"/>
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"
                  Foreground="Blue"

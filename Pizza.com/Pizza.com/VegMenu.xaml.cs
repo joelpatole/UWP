@@ -65,16 +65,9 @@ namespace Pizza.com
 
         private void VegMenu_Loaded(object sender, RoutedEventArgs e)
         {
-            //VegMenuList.Items.Clear();
             var a = pdp.GetVegPizzaList(); 
-
-            /*foreach (var p in pizzaList) 
-            {
-                VegMenuList.Items.Add(p);
-            }*/
             VegMenuList.ItemsSource = a;
             SetOrder();
-
         }
 
         private void VegMenu_SizeChanged(object sender, SizeChangedEventArgs e)

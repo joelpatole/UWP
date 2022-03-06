@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Pizza.com.Model;
 using Pizza.com.DataProvider;
 using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,16 +36,22 @@ namespace Pizza.com
             this.Loaded += SidersMenu_Loaded;
         }
 
+        //TODO:Should be moved to a new Util Class
+        private void SetOrder()
+        {
+            for (int i = 0; i < SidersMenuList.Items.Count; i++)
+            {
+                Product p = (Product)SidersMenuList.Items[i];
+                p.DeleteIndex = i;
+            }
+        }
+
         private void SidersMenu_Loaded(object sender, RoutedEventArgs e)
         {
-            //VegMenuList.Items.Clear();
-            var a = pdp.GetSidersList();
 
-            /*foreach (var p in pizzaList) 
-            {
-                VegMenuList.Items.Add(p);
-            }*/
+            var a = pdp.GetSidersList();
             SidersMenuList.ItemsSource = a;
+            SetOrder();
 
         }
 
@@ -83,9 +90,88 @@ namespace Pizza.com
             }
         }
 
+        private ProductOrder GetProductOrderByProduct(Product pro)
+        {
+            foreach (var p in ProductList)
+            {
+                if (p.Product.Equals(pro))
+                    return p;
+            }
+            return null;
+        }
+
+        private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)SidersMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    ProductList.Remove(po);
+                    SelectedPizzaListView.Items.Remove(po);
+                }
+
+            }
+
+            if (PizzaList.Contains(pizzaToDelete))
+                PizzaList.Remove(pizzaToDelete);
+        }
+
+        private async void IncrementItemCount_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)SidersMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    if (po.Count < 10)
+                        po.Count++;
+                    else
+                    {
+                        var dialog = new MessageDialog("Maxium order count is 10");
+                        await dialog.ShowAsync();
+                    }
+                }
+
+            }
+        }
+
+        private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)SidersMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    if (po.Count > 1)
+                        po.Count--;
+                    else
+                    {
+                        var dialog = new MessageDialog("Minimum order count is 1");
+                        await dialog.ShowAsync();
+                    }
+                }
+            }
+        }
+
         private void AddButtonSidersClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Cart), PizzaList);
+            this.Frame.Navigate(typeof(Cart), ProductList);
         }
     }
 }
