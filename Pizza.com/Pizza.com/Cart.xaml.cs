@@ -39,7 +39,7 @@ namespace Pizza.com
         {
             if (e == null || e.Parameter == null)
                 return;
-            var param = (ObservableCollection<Model.Product>)e.Parameter;
+            var param = (ObservableCollection<ProductOrder>)e.Parameter;
             foreach (var item in param) 
             {
                 productCart.AddItemToCart(item);

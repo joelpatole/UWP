@@ -11,7 +11,7 @@ namespace Pizza.com.Model
     public sealed class ProductCart
     {
         private static ProductCart _instance = null;
-        private static ObservableCollection<Model.Product> selectedItems;
+        private static ObservableCollection<ProductOrder> selectedItems;
         private static readonly object threadLock = new object();
         private static int count = 0;
 
@@ -39,17 +39,17 @@ namespace Pizza.com.Model
             }
         }
 
-        public void AddItemToCart(Model.Product product) 
+        public void AddItemToCart(ProductOrder product) 
         {
             selectedItems.Add(product);
         }
 
-        public bool RemoveItemFromCart(Model.Product product) 
+        public bool RemoveItemFromCart(ProductOrder product) 
         { 
             return selectedItems.Remove(product); 
         }
 
-        public ObservableCollection<Model.Product> GetCartItems() 
+        public ObservableCollection<ProductOrder> GetCartItems() 
         {
             return selectedItems;
         }
@@ -63,7 +63,7 @@ namespace Pizza.com.Model
 
         private ProductCart() 
         {
-            selectedItems = new ObservableCollection<Model.Product>();
+            selectedItems = new ObservableCollection<ProductOrder>();
         }
     }
 }

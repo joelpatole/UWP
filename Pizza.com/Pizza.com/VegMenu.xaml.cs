@@ -41,6 +41,8 @@ namespace Pizza.com
             //this.DataContext = PizzaList;    
         }
 
+
+        //TODO:Should be moved to a new Util Class
         private void SetOrder() 
         {
             for (int i = 0; i < VegMenuList.Items.Count; i++)
@@ -64,7 +66,7 @@ namespace Pizza.com
         private void VegMenu_Loaded(object sender, RoutedEventArgs e)
         {
             //VegMenuList.Items.Clear();
-            var a = pdp.GetVegPizzaList();
+            var a = pdp.GetVegPizzaList(); 
 
             /*foreach (var p in pizzaList) 
             {
@@ -97,7 +99,7 @@ namespace Pizza.com
         private void AddButtonVegClick(object sender, RoutedEventArgs e)
         {
 
-            this.Frame.Navigate(typeof(Cart), PizzaList);
+            this.Frame.Navigate(typeof(Cart), ProductList);
 
         }
 
@@ -112,11 +114,6 @@ namespace Pizza.com
             }
             else 
             {
-                //old code
-                //PizzaList.Add(item);
-                //SelectedPizzaListView.Items.Add(item);
-
-                //new code WIP
                 PizzaList.Add(item);
                 ProductOrder po = new ProductOrder();
                 po.Product = item;
@@ -127,6 +124,7 @@ namespace Pizza.com
             }
         }
 
+        //TODO: Should be moved to a new Util Class
         private ProductOrder GetProductOrderByProduct(Product pro) 
         {
             foreach (var p in ProductList) 
@@ -147,16 +145,16 @@ namespace Pizza.com
             if (pizzaToDelete != null)
             { 
                 ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
-                if(po != null)
-                    SelectedPizzaListView.Items.Remove(po);
+                if (po != null) 
+                {
+                    ProductList.Remove(po);
+                     SelectedPizzaListView.Items.Remove(po);
+                }
+                   
             }
             
             if (PizzaList.Contains(pizzaToDelete))
                 PizzaList.Remove(pizzaToDelete);
-
-            //SetOrder();
-            //SelectedPizzaListView.ItemsSource = null;
-            //SelectedPizzaListView.ItemsSource = list;
         }
 
         private async void IncrementItemCount_Click(object sender, RoutedEventArgs e) 

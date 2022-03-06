@@ -26,6 +26,7 @@ namespace Pizza.com
     public sealed partial class Siders : Page
     {
         ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
+        ObservableCollection<ProductOrder> ProductList = new ObservableCollection<ProductOrder>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public Siders() 
         {
@@ -66,13 +67,19 @@ namespace Pizza.com
 
             if (PizzaList.Contains(item))
             {
-                PizzaList.Remove(item);
-                SelectedPizzaListView.Items.Remove(item);
+               // PizzaList.Remove(item);
+                //SelectedPizzaListView.Items.Remove(item);
             }
             else
             {
+                //PizzaList.Add(item);
+                //SelectedPizzaListView.Items.Add(item);
                 PizzaList.Add(item);
-                SelectedPizzaListView.Items.Add(item);
+                ProductOrder po = new ProductOrder();
+                po.Product = item;
+                po.Count = 1;
+                ProductList.Add(po);
+                SelectedPizzaListView.Items.Add(po);
             }
         }
 

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Pizza.com.Model;
 using Pizza.com.DataProvider;
 using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,6 +28,7 @@ namespace Pizza.com
     {
         ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
         PizzaDataProvider pdp = new PizzaDataProvider();
+        ObservableCollection<ProductOrder> ProductList = new ObservableCollection<ProductOrder>();
         public NonvegMenu()
         {
             this.InitializeComponent();
@@ -34,9 +36,8 @@ namespace Pizza.com
             this.Loaded += NonVegMenu_Loaded;
         }
 
-        private void NonVegMenu_Loaded(object sender, RoutedEventArgs e)
+        private void NonVegMenu_Loaded(object sender, RoutedEventArgs e) 
         {
-            //VegMenuList.Items.Clear();
             var a = pdp.GetNonVegPizzaList();
 
             /*foreach (var p in pizzaList) 
@@ -44,6 +45,16 @@ namespace Pizza.com
                 VegMenuList.Items.Add(p);
             }*/
             NonVegMenuList.ItemsSource = a;
+            SetOrder();
+        }
+
+        private void SetOrder()
+        {
+            for (int i = 0; i < NonVegMenuList.Items.Count; i++)
+            {
+                Product p = (Product)NonVegMenuList.Items[i];
+                p.DeleteIndex = i;
+            }
 
         }
 
@@ -67,19 +78,103 @@ namespace Pizza.com
 
             if (PizzaList.Contains(item))
             {
-                PizzaList.Remove(item);
-                SelectedPizzaListView.Items.Remove(item);
+                //PizzaList.Remove(item);
+                //SelectedPizzaListView.Items.Remove(item);
             }
             else
             {
                 PizzaList.Add(item);
-                SelectedPizzaListView.Items.Add(item);
+                ProductOrder po = new ProductOrder();
+                po.Product = item;
+                po.Count = 1;
+                ProductList.Add(po);
+                SelectedPizzaListView.Items.Add(po);
             }
         }
 
         private void AddButtonNonVegClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Cart), PizzaList);
+            this.Frame.Navigate(typeof(Cart), ProductList);
+        }
+
+        //TODO: Should be moved to a new Util Class
+        private ProductOrder GetProductOrderByProduct(Product pro)
+        {
+            foreach (var p in ProductList)
+            {
+                if (p.Product.Equals(pro))
+                    return p;
+            }
+            return null;
+        }
+
+        private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)NonVegMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    ProductList.Remove(po);
+                    SelectedPizzaListView.Items.Remove(po);
+                }
+
+            }
+
+            if (PizzaList.Contains(pizzaToDelete))
+                PizzaList.Remove(pizzaToDelete);
+        }
+
+        private async void IncrementItemCount_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)NonVegMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    if (po.Count < 10)
+                        po.Count++;
+                    else
+                    {
+                        var dialog = new MessageDialog("Maxium order count is 10");
+                        await dialog.ShowAsync();
+                    }
+                }
+
+            }
+        }
+
+        private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag == null)
+                return;
+            int index = (int)btn.Tag;
+            Product pizzaToDelete = (Product)NonVegMenuList.Items[index];
+            if (pizzaToDelete != null)
+            {
+                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+                if (po != null)
+                {
+                    if (po.Count > 1)
+                        po.Count--;
+                    else
+                    {
+                        var dialog = new MessageDialog("Minimum order count is 1");
+                        await dialog.ShowAsync();
+                    }
+                }
+            }
         }
     }
 }

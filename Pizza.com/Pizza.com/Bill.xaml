@@ -50,7 +50,7 @@
         <TextBlock x:Name="scanTextBlock"
                    Grid.Column="1" 
                    HorizontalAlignment="Left" 
-                   Margin="1027,30,0,0" 
+                   Margin="890,30,0,0" 
                    Grid.Row="1" 
                    TextWrapping="Wrap" 
                    Text="SCAN QR FOR PAYMENT"
@@ -58,11 +58,11 @@
                    FontSize="48" 
                    FontFamily="Segoe UI Semibold" 
                    FontWeight="Bold" Width="329" 
-                   Foreground="Purple"/>
+                   Foreground="Purple" RenderTransformOrigin="-0.261,0.53"/>
         <Image x:Name="imageQR" 
                Grid.ColumnSpan="2"
                HorizontalAlignment="Left" 
-               Margin="1014,156,0,-235" 
+               Margin="863,145,0,-224" 
                Grid.Row="1" Width="342" 
                Source="Images/ImageQR1.jpeg" 
                RenderTransformOrigin="1.096,0.459"/>
