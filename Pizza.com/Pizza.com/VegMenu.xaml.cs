@@ -16,6 +16,7 @@ using Pizza.com.Model;
 using Pizza.com.DataProvider;
 using System.Collections.ObjectModel;
 using Windows.UI.Popups;
+using Pizza.com.UserControls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,21 +25,18 @@ namespace Pizza.com
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class VegMenu : Page
+    public sealed partial class VegMenu : Page, IMenu
     {
         
         ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
-        
-        
         ObservableCollection<ProductOrder> ProductList = new ObservableCollection<ProductOrder>();
-       //ObservableCollection<Pizza1> selected = new ObservableCollection<Pizza1>();
         PizzaDataProvider pdp = new PizzaDataProvider();
         public VegMenu()
         {
             this.InitializeComponent();
             this.SizeChanged += VegMenu_SizeChanged;
-            this.Loaded += VegMenu_Loaded;
-            //this.DataContext = PizzaList;    
+            this.Loaded += VegMenu_Loaded;  
+            SelectedProductListView.SetIMenu(this);
         }
 
 
@@ -51,17 +49,6 @@ namespace Pizza.com
                 p.DeleteIndex = i;
             }
         }
-       /* protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            selected = (ObservableCollection<Pizza1>)e.Parameter;
-            navigateFromCart(selected);
-        }
-
-        private void navigateFromCart(ObservableCollection<Pizza1> selectedItm)
-        {
-            throw new NotImplementedException();
-            Pizza1 i = ((Pizza1)VegMenuList.selectedItm);
-        }*/
 
         private void VegMenu_Loaded(object sender, RoutedEventArgs e)
         {
@@ -84,41 +71,26 @@ namespace Pizza.com
              this.Frame.Navigate(typeof(MainPage));
         }
 
-        private void CheckBox_IsCheckedChanged(object sender, RoutedEventArgs e)
-        {
-            //UpdateCart();
-        }
-
         private void AddButtonVegClick(object sender, RoutedEventArgs e)
         {
 
-            this.Frame.Navigate(typeof(Cart), ProductList);
+            this.Frame.Navigate(typeof(Cart), SelectedProductListView.GetProductList());
 
         }
 
         private void VegMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Model.Product item = ((Model.Product)VegMenuList.SelectedItem);
-            
-            if (PizzaList.Contains(item))
-            {
-                //PizzaList.Remove(item);
-                //SelectedPizzaListView.Items.Remove(item);
-            }
-            else 
-            {
-                PizzaList.Add(item);
-                ProductOrder po = new ProductOrder();
-                po.Product = item;
-                po.Count = 1;
-                ProductList.Add(po);
-                SelectedPizzaListView.Items.Add(po);
-                
-            }
+            SelectedProductListView.AddProduct(item);
         }
 
-        //TODO: Should be moved to a new Util Class
-        private ProductOrder GetProductOrderByProduct(Product pro) 
+        public Product GetItemByIndex(int index)
+        {
+            return (Product)VegMenuList.Items[index];
+        }
+       
+        // Below 4 Functions are moved to SelectedProductList.xaml.cs as the initial refactoring.
+        /*private ProductOrder GetProductOrderByProduct(Product pro) 
         {
             foreach (var p in ProductList) 
             {
@@ -126,9 +98,9 @@ namespace Pizza.com
                     return p;
             }
             return null;
-        }
+        }*/
 
-        private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
+        /*private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             if (btn.Tag == null)
@@ -140,17 +112,17 @@ namespace Pizza.com
                 ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
                 if (po != null) 
                 {
-                    ProductList.Remove(po);
-                     SelectedPizzaListView.Items.Remove(po);
+                    //Old
+                    selectedProductList.RemoveProduct(po);
                 }
                    
             }
             
             if (PizzaList.Contains(pizzaToDelete))
                 PizzaList.Remove(pizzaToDelete);
-        }
+        }*/
 
-        private async void IncrementItemCount_Click(object sender, RoutedEventArgs e) 
+        /*private async void IncrementItemCount_Click(object sender, RoutedEventArgs e) 
         {
             Button btn = (Button)sender;
             if (btn.Tag == null)
@@ -172,9 +144,9 @@ namespace Pizza.com
                 }
                    
             }
-        }
+        }*/
 
-        private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
+        /*private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             if (btn.Tag == null)
@@ -195,6 +167,6 @@ namespace Pizza.com
                     }
                 }
             }
-        }
+        }*/
     }
 }

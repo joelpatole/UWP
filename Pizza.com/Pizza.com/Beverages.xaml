@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Pizza.com"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:usercontrols="using:Pizza.com.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
      d:DesignWidth="600"
@@ -85,7 +85,7 @@
                 Foreground="White"
                 Click="AddButtonBeveragesClick"/>
 
-        <ListView x:Name="SelectedPizzaListView" 
+        <!--<ListView x:Name="SelectedPizzaListView" 
                   Grid.Column="1" HorizontalAlignment="Left" Height="122" 
                   Margin="41,80,0,0" Grid.Row="1" 
                   VerticalAlignment="Top" Width="800" BorderBrush="Black"
@@ -121,7 +121,11 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+        <usercontrols:SlectedProductsList
+            x:Name="SelectedProductListView"
+            Grid.Column="1" Grid.Row="1"></usercontrols:SlectedProductsList>
+        
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"
                  Foreground="Blue"

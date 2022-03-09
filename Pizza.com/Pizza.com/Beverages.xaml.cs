@@ -24,7 +24,7 @@ namespace Pizza.com
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Beverages: Page
+    public sealed partial class Beverages: Page, IMenu
     {
         ObservableCollection<Model.Product> PizzaList = new ObservableCollection<Model.Product>();
         ObservableCollection<ProductOrder> ProductList = new ObservableCollection<ProductOrder>();
@@ -34,6 +34,7 @@ namespace Pizza.com
             this.InitializeComponent();
             this.SizeChanged += BeveragesMenu_SizeChanged;
             this.Loaded += BeveragesMenu_Loaded;
+            SelectedProductListView.SetIMenu(this);
         }
 
         //TODO:Should be moved to a new Util Class
@@ -48,12 +49,9 @@ namespace Pizza.com
 
         private void BeveragesMenu_Loaded(object sender, RoutedEventArgs e)
         {
-
             var a = pdp.GetBeveragesList();
             BeveragesMenuList.ItemsSource = a;
             SetOrder();
-
-
         }
 
         private void BeveragesMenu_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -74,107 +72,98 @@ namespace Pizza.com
         private void BeveragesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Model.Product item = ((Model.Product)BeveragesMenuList.SelectedItem);
-
-            if (PizzaList.Contains(item))
-            {
-                //PizzaList.Remove(item);
-                //SelectedPizzaListView.Items.Remove(item);
-            }
-            else
-            {
-                //PizzaList.Add(item);
-                //SelectedPizzaListView.Items.Add(item);
-                PizzaList.Add(item);
-                ProductOrder po = new ProductOrder();
-                po.Product = item;
-                po.Count = 1;
-                ProductList.Add(po);
-                SelectedPizzaListView.Items.Add(po);
-            }
-        }
-
-        private ProductOrder GetProductOrderByProduct(Product pro)
-        {
-            foreach (var p in ProductList)
-            {
-                if (p.Product.Equals(pro))
-                    return p;
-            }
-            return null;
-        }
-
-        private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            if (btn.Tag == null)
-                return;
-            int index = (int)btn.Tag;
-            Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
-            if (pizzaToDelete != null)
-            {
-                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
-                if (po != null)
-                {
-                    ProductList.Remove(po);
-                    SelectedPizzaListView.Items.Remove(po);
-                }
-
-            }
-
-            if (PizzaList.Contains(pizzaToDelete))
-                PizzaList.Remove(pizzaToDelete);
-        }
-
-        private async void IncrementItemCount_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            if (btn.Tag == null)
-                return;
-            int index = (int)btn.Tag;
-            Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
-            if (pizzaToDelete != null)
-            {
-                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
-                if (po != null)
-                {
-                    if (po.Count < 10)
-                        po.Count++;
-                    else
-                    {
-                        var dialog = new MessageDialog("Maxium order count is 10");
-                        await dialog.ShowAsync();
-                    }
-                }
-
-            }
-        }
-
-        private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            if (btn.Tag == null)
-                return;
-            int index = (int)btn.Tag;
-            Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
-            if (pizzaToDelete != null)
-            {
-                ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
-                if (po != null)
-                {
-                    if (po.Count > 1)
-                        po.Count--;
-                    else
-                    {
-                        var dialog = new MessageDialog("Minimum order count is 1");
-                        await dialog.ShowAsync();
-                    }
-                }
-            }
+            SelectedProductListView.AddProduct(item);
         }
 
         private void AddButtonBeveragesClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Cart), ProductList);
+            this.Frame.Navigate(typeof(Cart), SelectedProductListView.GetProductList());
         }
+
+        public Product GetItemByIndex(int index)
+        {
+            return (Product)BeveragesMenuList.Items[index];
+        }
+
+        //Below 4 functions are moved to SelectedProductList for refactoring
+        //private ProductOrder GetProductOrderByProduct(Product pro)
+        //{
+        //    foreach (var p in ProductList)
+        //    {
+        //        if (p.Product.Equals(pro))
+        //            return p;
+        //    }
+        //    return null;
+        //}
+
+        //private void DeleteItemFromCart_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    if (btn.Tag == null)
+        //        return;
+        //    int index = (int)btn.Tag;
+        //    Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
+        //    if (pizzaToDelete != null)
+        //    {
+        //        ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+        //        if (po != null)
+        //        {
+        //            ProductList.Remove(po);
+        //            SelectedPizzaListView.Items.Remove(po);
+        //        }
+
+        //    }
+
+        //    if (PizzaList.Contains(pizzaToDelete))
+        //        PizzaList.Remove(pizzaToDelete);
+        //}
+
+        //private async void IncrementItemCount_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    if (btn.Tag == null)
+        //        return;
+        //    int index = (int)btn.Tag;
+        //    Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
+        //    if (pizzaToDelete != null)
+        //    {
+        //        ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+        //        if (po != null)
+        //        {
+        //            if (po.Count < 10)
+        //                po.Count++;
+        //            else
+        //            {
+        //                var dialog = new MessageDialog("Maxium order count is 10");
+        //                await dialog.ShowAsync();
+        //            }
+        //        }
+
+        //    }
+        //}
+
+        //private async void DecrementCountButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    if (btn.Tag == null)
+        //        return;
+        //    int index = (int)btn.Tag;
+        //    Product pizzaToDelete = (Product)BeveragesMenuList.Items[index];
+        //    if (pizzaToDelete != null)
+        //    {
+        //        ProductOrder po = GetProductOrderByProduct(pizzaToDelete);
+        //        if (po != null)
+        //        {
+        //            if (po.Count > 1)
+        //                po.Count--;
+        //            else
+        //            {
+        //                var dialog = new MessageDialog("Minimum order count is 1");
+        //                await dialog.ShowAsync();
+        //            }
+        //        }
+        //    }
+        //}
+
     }
 }

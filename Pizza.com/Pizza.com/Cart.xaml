@@ -46,6 +46,7 @@
                        FontSize="45"
                        Foreground="DarkBlue"
                        FontWeight="SemiBold"/>
+            
             <ListView Grid.Row="1" x:Name="cartListView"
                       DisplayMemberPath="Product.Name"
                       SelectionChanged="cartListView_SelectionChanged">
