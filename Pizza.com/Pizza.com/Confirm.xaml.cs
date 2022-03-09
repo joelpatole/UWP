@@ -20,17 +20,16 @@ namespace Pizza.com
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Bill : Page
+    public sealed partial class Confirm : Page
     {
-        public Bill()
+        public Confirm()
         {
             this.InitializeComponent();
         }
 
-
-        private void PaymentDoneClick(object sender, RoutedEventArgs e)
+        private void FinishClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Confirm));
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
