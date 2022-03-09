@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Pizza.com.Cart"
+    x:Class="Pizza.com.Confirm"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Pizza.com"
@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     d:Height="400"
     d:Width="600">
+
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -23,7 +24,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--Headers-->
+
         <StackPanel  Grid.ColumnSpan="2"  Background="Blue" Orientation="Horizontal">
             <Image Source="Images/logo.jpeg" Height="120" Margin="5"/>
             <TextBlock Text="pizza.com"
@@ -40,33 +41,41 @@
                        Margin="0 0 0 25"/>
 
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-            <TextBlock Text="Your Selects...."
-                       Margin="10,10,0,0"
-                       FontSize="45"
-                       Foreground="DarkBlue"
-                       FontWeight="SemiBold"/>
-            
-            <ListView Grid.Row="1" x:Name="cartListView"
-                      DisplayMemberPath="Product.Name"
-                      SelectionChanged="cartListView_SelectionChanged">
-            </ListView>
-            <Button Content="Back to Menu"
+        <Image Source="Images/pizza.jpg"
+               Stretch="Fill"
+               Opacity="0.30"
+               Grid.Row="1" Grid.ColumnSpan="2" Height="600" Width="1300">
+        </Image>
+        <TextBlock 
+            Grid.Column="1" 
+            HorizontalAlignment="Center"  
+            Grid.Row="1" TextWrapping="Wrap" 
+            Foreground="Black"
+            Text="Order Confirmed" 
+            VerticalAlignment="Top" 
+            Height="116"
+            FontStyle="Italic"
+            FontSize="60"
+            FontWeight="ExtraBold"
+            Width="600" Margin="40,75,0,0"
+           />
+        <TextBlock
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Grid.Row="1" Foreground="IndianRed"
+            Text="Thankyou..! For choosing us as your Pizza Destination..."
+            VerticalAlignment="Top"
+            FontSize="30"
+            FontWeight="Bold"
+            FontStyle="Italic"
+            Margin="35,165,90,0"/>
+        <Button Content="Finish"
                 FontSize="30"
+                Margin="0,0,0,60"
+                VerticalAlignment="Bottom"
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Center"
                 Background="Blue"
-                Margin="60,50,0,0"
-                Click="BackButtonClick"/>
-        </StackPanel>
-        <Button x:Name="goToBill" Background="Blue" 
-                Content="View Bill"
-                Foreground="Black"
-                Margin="300,120,0,0" 
-                FontSize="30"                
-                Grid.Row="1" 
-                VerticalAlignment="Top" 
-                RenderTransformOrigin="1.378,0.72"
-                Click="goToBill_Click"/>
-
+                Click="FinishClick"/>
     </Grid>
-
 </Page>

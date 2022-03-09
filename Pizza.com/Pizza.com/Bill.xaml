@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -62,10 +63,19 @@
         <Image x:Name="imageQR" 
                Grid.ColumnSpan="2"
                HorizontalAlignment="Left" 
-               Margin="863,145,0,-224" 
+               Margin="863,145,0,239" 
                Grid.Row="1" Width="342" 
                Source="Images/ImageQR1.jpeg" 
                RenderTransformOrigin="1.096,0.459"/>
+        <Button Grid.Column="1" 
+                Content="Payment Done" 
+                Background="DarkSeaGreen"
+                Margin="953,495,0,174" 
+                Grid.Row="1" 
+                VerticalAlignment="Stretch" 
+                RenderTransformOrigin="-3.782,-7.946" 
+                Click="PaymentDoneClick" Width="162"
+                />
 
     </Grid>
 </Page>
