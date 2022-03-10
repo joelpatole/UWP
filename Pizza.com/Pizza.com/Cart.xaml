@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Pizza.com"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:usercontrols="using:Pizza.com.UserControls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    d:Height="400"
+    d:Height="900"
     d:Width="600">
 
     <Grid>
@@ -46,11 +46,35 @@
                        FontSize="45"
                        Foreground="DarkBlue"
                        FontWeight="SemiBold"/>
-            
-            <ListView Grid.Row="1" x:Name="cartListView"
+
+            <!--<ListView Grid.Row="1" x:Name="cartListView"
                       DisplayMemberPath="Product.Name"
                       SelectionChanged="cartListView_SelectionChanged">
+            </ListView>-->
+
+            <ListView x:Name="cartListView" 
+                  HorizontalAlignment="Left" Height="300" 
+                  Margin="41,80,0,0"  
+                  VerticalAlignment="Top" Width="900" BorderBrush="Black"
+                  BorderThickness="0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Width="600">
+                                <TextBlock Text="{Binding Path=Product.Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left" 
+                                           Width="400"/>
+                                <TextBlock Text=" _ "/>
+                                <TextBlock Text="{Binding Path=Product.Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                                <TextBlock Text=".Rs " Foreground="Green" FontSize="20" HorizontalAlignment="Left" Width="100"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Path=Count}" FontSize="20"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
             </ListView>
+
             <Button Content="Back to Menu"
                 FontSize="30"
                 Background="Blue"
@@ -60,7 +84,7 @@
         <Button x:Name="goToBill" Background="Blue" 
                 Content="View Bill"
                 Foreground="Black"
-                Margin="300,120,0,0" 
+                Margin="421,20,0,0" 
                 FontSize="30"                
                 Grid.Row="1" 
                 VerticalAlignment="Top" 

@@ -13,19 +13,19 @@
                   HorizontalAlignment="Left" Height="122" 
                   Margin="41,80,0,0"  
                   VerticalAlignment="Top" Width="800" BorderBrush="Black"
-                  BorderThickness="1">
+                  BorderThickness="0">
 
         <ListView.ItemTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Width="500">
                         <TextBlock Text="{Binding Path=Product.Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left"/>
                         <TextBlock Text=" _ "/>
                         <TextBlock Text="{Binding Path=Product.Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
                         <TextBlock Text=".Rs" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
                     </StackPanel>
                     <Button Click="IncrementItemCount_Click" x:Name="IncrementCountButton" 
-                                    Margin="350,0,0,0" HorizontalAlignment="Right"
+                                    Margin="0,0,0,0" HorizontalAlignment="Right"
                                     Tag="{Binding Product.DeleteIndex}">
                         <SymbolIcon Symbol="Add"
                                         x:Name="IncrementSymbol"/>

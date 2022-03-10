@@ -28,6 +28,7 @@ namespace Pizza.com
         //<Pizza1> pizzas =  new List<Pizza1>();
         
         ProductCart productCart = ProductCart.GetInstance;
+        int totoalBill;
         public Cart()
         {
             this.InitializeComponent();
@@ -55,6 +56,7 @@ namespace Pizza.com
                 foreach (var item in allItemsInCart)
                 {
                     cartListView.Items.Add(item);
+                    totoalBill = totoalBill + (item.Product.Pcost * item.Product.Price);
                 }
             }
             else

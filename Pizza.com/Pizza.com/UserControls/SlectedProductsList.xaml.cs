@@ -68,6 +68,11 @@ namespace Pizza.com.UserControls
             this.InitializeComponent();
         }
 
+        public void SetSelectedListView(ObservableCollection<ProductOrder> selListView)
+        {
+            this.ProductList = selListView;
+        }
+
         //TODO: Should be moved to a new Util Class
         private ProductOrder GetProductOrderByProduct(Product pro)
         {
