@@ -67,17 +67,17 @@
             </ListBox>
 
         </StackPanel>
-        
+
         <Button Content="Back"
-                Grid.Column="1" Grid.Row="1" 
-                Margin="158,224,0,0"  
+               
+                Margin="43,271,0,0"  
                 x:Name="ClickBackButton" 
                 Width="124" Height="85" 
                 Background="Blue" 
                 Foreground="White"
-                Click="BackButtonBeveragesClick" VerticalAlignment="Top"/>
+                Click="BackButtonBeveragesClick" VerticalAlignment="Top" RenderTransformOrigin="1.593,2.588" Grid.Column="1" Grid.Row="1"/>
         <Button Content="Add to cart"
-                Margin="400,0,0,30"
+                Margin="400,107,0,30"
                 Grid.Column="1" Grid.Row="1"
                 x:Name="ClickAddButton"
                 Width="124" Height="85"
@@ -124,8 +124,8 @@
         </ListView>-->
         <usercontrols:SlectedProductsList
             x:Name="SelectedProductListView"
-            Grid.Column="1" Grid.Row="1"></usercontrols:SlectedProductsList>
-        
+            Grid.Column="1" Grid.Row="1" Loaded="SelectedProductListView_Loaded"></usercontrols:SlectedProductsList>
+
         <TextBlock x:Name="UserSelectedTitle" 
                  FontSize="20"
                  Foreground="Blue"

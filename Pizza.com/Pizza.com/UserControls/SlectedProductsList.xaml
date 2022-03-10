@@ -10,10 +10,10 @@
     d:DesignWidth="400">
 
     <ListView x:Name="SelectedPizzaListView" 
-                  HorizontalAlignment="Left" Height="122" 
+                  HorizontalAlignment="Left" Height="188" 
                   Margin="41,80,0,0"  
-                  VerticalAlignment="Top" Width="800" BorderBrush="Black"
-                  BorderThickness="0">
+                  VerticalAlignment="Top" Width="800" BorderBrush="Blue"
+                  BorderThickness="1">
 
         <ListView.ItemTemplate>
             <DataTemplate>

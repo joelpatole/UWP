@@ -85,6 +85,11 @@ namespace Pizza.com
             return (Product)BeveragesMenuList.Items[index];
         }
 
+        private void SelectedProductListView_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //Below 4 functions are moved to SelectedProductList for refactoring
         //private ProductOrder GetProductOrderByProduct(Product pro)
         //{

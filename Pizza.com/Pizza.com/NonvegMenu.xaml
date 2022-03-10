@@ -72,14 +72,14 @@
 
         <Button Content="Back"
                 Grid.Column="1" Grid.Row="1" 
-                Margin="158,224,0,0"  
+                Margin="43,271,0,0" 
                 x:Name="ClickBackButton" 
                 Width="124" Height="85" 
                 Background="Blue" 
                 Foreground="White"
                 Click="BackButtonNonVegClick" VerticalAlignment="Top"/>
         <Button Content="Add to cart"
-                Margin="400,0,0,30"
+                Margin="400,107,0,30"
                 Grid.Column="1" Grid.Row="1"
                 x:Name="ClickAddButton"
                 Width="124" Height="85"
