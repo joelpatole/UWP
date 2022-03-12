@@ -22,13 +22,13 @@ namespace Pizza.com
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Cart : Page
+    public partial class Cart : Page
     {
         //public static Cart instance; 
         //<Pizza1> pizzas =  new List<Pizza1>();
         
         ProductCart productCart = ProductCart.GetInstance;
-        int totalBill;
+        public static int totalBill;
         public Cart()
         {
             this.InitializeComponent();
@@ -64,7 +64,7 @@ namespace Pizza.com
             {
                 cartListView = null;
             }
-            TotalTextBox.Text = totalBill.ToString();
+            TotalTextBlock.Text = totalBill.ToString();
             
         }
 

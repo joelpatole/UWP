@@ -20,11 +20,14 @@ namespace Pizza.com
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Bill : Page
+    public sealed partial class Bill : Page 
     {
         public Bill()
         {
             this.InitializeComponent();
+            billTextBlockTotal.Visibility = Visibility.Visible;
+            string s = Cart.totalBill.ToString();
+            billTextBlockTotal.Text = s;
         }
 
 
@@ -32,5 +35,9 @@ namespace Pizza.com
         {
             this.Frame.Navigate(typeof(Confirm));
         }
+       // string s = Cart.totalBill.ToString();
+        
+
     }
+    
 }

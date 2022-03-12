@@ -77,7 +77,7 @@
 
             <StackPanel x:Name="totalStackPanel" Orientation="Horizontal" Margin="60,0,0,0">
                 <TextBlock Text="Bill:" Foreground="DarkSeaGreen" FontStyle="Normal" FontSize="30" FontWeight="Bold" RenderTransformOrigin="7.028,-7.918"/>
-                <TextBlock x:Name="TotalTextBox" Margin="0,0,0,0" Text="{Binding Path=totalBill}" Foreground="DarkSeaGreen" FontSize="30" FontStyle="Normal" FontWeight="Bold"/>
+                <TextBlock x:Name="TotalTextBlock" Margin="0,0,0,0" Text="{Binding Path=totalBill}" Foreground="DarkSeaGreen" FontSize="30" FontStyle="Normal" FontWeight="Bold"/>
                
             </StackPanel>
 
