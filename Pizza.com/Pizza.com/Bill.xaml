@@ -20,6 +20,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+       
+
         <StackPanel  Grid.ColumnSpan="2"  Background="Blue" Orientation="Horizontal">
             <Image Source="Images/logo.jpeg" Height="120" Margin="5"/>
             <TextBlock Text="pizza.com"
@@ -48,6 +50,8 @@
                    Height="94" 
                    RenderTransformOrigin="-6.423,-1.64" 
                    Width="325" Foreground="Purple"/>
+        
+        
         <TextBlock x:Name="scanTextBlock"
                    Grid.Column="1" 
                    HorizontalAlignment="Left" 
@@ -76,6 +80,32 @@
                 RenderTransformOrigin="-3.782,-7.946" 
                 Click="PaymentDoneClick" Width="162"
                 />
+
+        <ListView 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            RenderTransformOrigin="0.221,0.598" 
+            Margin="250,145,642,174" 
+            BorderThickness="3"
+            BorderBrush="DarkSeaGreen">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Width="auto">
+                            <TextBlock Text="{Binding Path=Product.Name}" Foreground="Blue" FontSize="20" HorizontalAlignment="Left" 
+                                           Width="400"/>
+                            <TextBlock Text=" _ "/>
+                            <TextBlock Text="{Binding Path=Product.Price}" Foreground="Green" FontSize="20" HorizontalAlignment="Right"/>
+                            <TextBlock Text=".Rs " Foreground="Green" FontSize="20" HorizontalAlignment="Left" Width="100"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Path=Count}" FontSize="20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
 
     </Grid>
 </Page>

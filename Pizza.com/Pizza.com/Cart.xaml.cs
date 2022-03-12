@@ -28,7 +28,7 @@ namespace Pizza.com
         //<Pizza1> pizzas =  new List<Pizza1>();
         
         ProductCart productCart = ProductCart.GetInstance;
-        int totoalBill;
+        int totalBill;
         public Cart()
         {
             this.InitializeComponent();
@@ -44,6 +44,7 @@ namespace Pizza.com
             foreach (var item in param) 
             {
                 productCart.AddItemToCart(item);
+                
             }
         }
 
@@ -56,13 +57,15 @@ namespace Pizza.com
                 foreach (var item in allItemsInCart)
                 {
                     cartListView.Items.Add(item);
-                    totoalBill = totoalBill + (item.Product.Pcost * item.Product.Price);
+                    totalBill = totalBill + (item.Count * item.Product.Price );
                 }
             }
             else
             {
                 cartListView = null;
             }
+            TotalTextBox.Text = totalBill.ToString();
+            
         }
 
         private void BackButtonClick(object sender, RoutedEventArgs e)

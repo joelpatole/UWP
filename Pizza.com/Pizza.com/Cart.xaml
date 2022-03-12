@@ -40,7 +40,7 @@
                        Margin="0 0 0 25"/>
 
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <TextBlock Text="Your Selects...."
                        Margin="10,10,0,0"
                        FontSize="45"
@@ -75,10 +75,16 @@
 
             </ListView>
 
+            <StackPanel x:Name="totalStackPanel" Orientation="Horizontal" Margin="60,0,0,0">
+                <TextBlock Text="Bill:" Foreground="DarkSeaGreen" FontStyle="Normal" FontSize="30" FontWeight="Bold" RenderTransformOrigin="7.028,-7.918"/>
+                <TextBlock x:Name="TotalTextBox" Margin="0,0,0,0" Text="{Binding Path=totalBill}" Foreground="DarkSeaGreen" FontSize="30" FontStyle="Normal" FontWeight="Bold"/>
+               
+            </StackPanel>
+
             <Button Content="Back to Menu"
                 FontSize="30"
                 Background="Blue"
-                Margin="60,50,0,0"
+                Margin="60,0,0,0"
                 Click="BackButtonClick"/>
         </StackPanel>
         <Button x:Name="goToBill" Background="Blue" 
