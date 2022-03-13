@@ -29,6 +29,7 @@ namespace Pizza.com
         
         ProductCart productCart = ProductCart.GetInstance;
         public static int totalBill;
+        public static int temptotalBill;
         public Cart()
         {
             this.InitializeComponent();
@@ -50,15 +51,21 @@ namespace Pizza.com
 
         private void Cart_Loaded(object sender, RoutedEventArgs e)
         {
+            totalBill = 0;
             // cartListView.Items.Clear();
             if (productCart.GetItemCount() > 0)
             {
+                //int i = 0;
                 var allItemsInCart = productCart.GetCartItems();
                 foreach (var item in allItemsInCart)
                 {
+
                     cartListView.Items.Add(item);
-                    totalBill = totalBill + (item.Count * item.Product.Price );
+                    totalBill = totalBill + ((item.Count * item.Product.Price));
+                   
+                    
                 }
+                
             }
             else
             {
