@@ -91,15 +91,29 @@
             HorizontalAlignment="Left" 
             Width="802">
             <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="order_num"
+                       Foreground="Green"
+                       FontSize="30"
+                       Text="Order number - "
+                       FontWeight="Bold"/>
+                
+                <TextBlock x:Name="ord_num"
+                       Foreground="Green"
+                       FontSize="30"
+                       Text="{Binding Path = order_id}"
+                       FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="billText" 
                        Foreground="DarkGreen" 
-                       FontSize="70" 
-                        Text="YOUR AMOUNT"
+                       FontSize="50" 
+                        Text="AMOUNT TO BE PAID"
                        FontWeight="ExtraBold">
 
                 </TextBlock>
                 <TextBlock Text=" = " 
-                           FontSize="70"
+                           FontSize="50"
                            FontWeight="Bold"
                            Foreground="DarkGreen"> 
                     
@@ -107,7 +121,7 @@
 
                     <TextBlock x:Name="billTextBlockTotal" 
                        Foreground="DarkGreen" 
-                       FontSize="70" 
+                       FontSize="50" 
                         Text="{Binding Path = totalBill}"
                        FontWeight="ExtraBold">
 

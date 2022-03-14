@@ -22,13 +22,17 @@ namespace Pizza.com
     /// </summary>
     public sealed partial class Confirm : Page
     {
+       //public static int order_num = 1;
+        public static int order_id = 1;
         public Confirm()
         {
             this.InitializeComponent();
+            
         }
 
         private void FinishClick(object sender, RoutedEventArgs e)
         {
+            order_id++;
             this.Frame.Navigate(typeof(MainPage));
         }
     }
