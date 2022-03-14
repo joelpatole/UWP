@@ -104,6 +104,7 @@ namespace Pizza.com
             
         }
 
+        //REAL BAD WAY OF DOING THINGS: TODO: Needs to be shifted to new Util Class this method does not belong here.
         //https://stackoverflow.com/questions/32260/sending-email-in-net-through-gmail
         //https://stackoverflow.com/questions/5943771/c-sharp-sending-email-code-suddenly-stopped-working
         public async Task NotifyOwnerThroughEmail(ProductCart pc)
@@ -136,16 +137,16 @@ namespace Pizza.com
             message.Body = body;
             message.IsBodyHtml = true;
             
-                try 
-                {
-                    smtp.SendAsync(message, null);
-                    //smtp.SendMailAsync(message);
-                    //smtp.Dispose;
-                }
-                catch (Exception e) 
-                {
-                    body = "";
-                }
+            try 
+            {
+                smtp.SendAsync(message, null);
+                //smtp.SendMailAsync(message);
+                //smtp.Dispose;
+            }
+            catch (Exception e) 
+            {
+                body = "";
+            }
         }
 
         private void Smtp_SendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
