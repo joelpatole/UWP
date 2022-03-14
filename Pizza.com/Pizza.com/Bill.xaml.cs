@@ -28,6 +28,8 @@ namespace Pizza.com
             billTextBlockTotal.Visibility = Visibility.Visible;
             string s = Cart.totalBill.ToString();
             billTextBlockTotal.Text = s;
+            String i = Confirm.order_id.ToString();
+            ord_num.Text = i;
         }
 
 
