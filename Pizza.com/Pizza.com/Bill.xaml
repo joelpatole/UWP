@@ -92,7 +92,7 @@
             Width="802">
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="billText" 
-                       Foreground="DarkSeaGreen" 
+                       Foreground="DarkGreen" 
                        FontSize="70" 
                         Text="YOUR AMOUNT"
                        FontWeight="ExtraBold">
@@ -101,12 +101,12 @@
                 <TextBlock Text=" = " 
                            FontSize="70"
                            FontWeight="Bold"
-                           Foreground="DarkSeaGreen"> 
+                           Foreground="DarkGreen"> 
                     
                 </TextBlock>
 
                     <TextBlock x:Name="billTextBlockTotal" 
-                       Foreground="DarkSeaGreen" 
+                       Foreground="DarkGreen" 
                        FontSize="70" 
                         Text="{Binding Path = totalBill}"
                        FontWeight="ExtraBold">

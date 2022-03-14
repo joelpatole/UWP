@@ -38,9 +38,9 @@ namespace Pizza.com
             SelectedProductListView.SetIMenu(this);
         }
 
-        private void NonVegMenu_Loaded(object sender, RoutedEventArgs e) 
+        private async void NonVegMenu_Loaded(object sender, RoutedEventArgs e) 
         {
-            var a = pdp.GetNonVegPizzaList();
+            var a = await pdp.GetProductByCategory(Constants.ProductTypes.NonVegPizza);
 
             /*foreach (var p in pizzaList) 
             {

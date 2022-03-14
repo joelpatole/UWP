@@ -1,0 +1,89 @@
+[
+  {
+    "Name": "Margherita",
+    "Price": 99,
+    "Description": "classic delight with 100% mozzarella cheese",
+    "Type": "VegPizza"
+  },
+  {
+    "Name": "Farmhouse",
+    "Price": 250,
+    "Description": "Delightful combo of onion, capsicum and mushrooms",
+    "Type": "VegPizza"
+  },
+  {
+    "Name": "Paneer Delight",
+    "Price": 250,
+    "Description": "Flavourful trio of juicy paneer,capsicum and paprika",
+    "Type": "VegPizza"
+  },
+  {
+    "Name": "Veggie paradise",
+    "Price": 300,
+    "Description": "Foresum of golden corn,olives,capsicum and paprika",
+    "Type": "VegPizza"
+  },
+  {
+    "Name": "Delux Veggie",
+    "Price": 300,
+    "Description": "Foresum of golden corn,olives,capsicum and paprika",
+    "Type": "VegPizza"
+  },
+
+
+
+  {
+    "Name": "Chicken Sausage",
+    "Price": 110,
+    "Description": "American classic! herbed chichen sausage on pizza",
+    "Type": "NonVegPizza"
+  },
+  {
+    "Name": "NonVeg Loaded",
+    "Price": 250,
+    "Description": "Trio of chicken sausage,pepper barbeque and peri peri chicken",
+    "Type": "NonVegPizza"
+  },
+  {
+    "Name": "Chicken golden Delight",
+    "Price": 280,
+    "Description": "Pepper barbeque chicken with golden corn",
+    "Type": "NonVegPizza"
+  },
+  {
+    "Name": "Chicken Dominator",
+    "Price": 350,
+    "Description": "Loaded with chicken tikka and grilled chicken bites",
+    "Type": "NonVegPizza"
+  },
+  {
+    "Name": "Chicken Papperoni",
+    "Price": 300,
+    "Description": "Relish the flavour of chicken pepperoni with loaded cheese",
+    "Type": "NonVegPizza"
+  },
+  {
+    "Name": "Ice tea",
+    "Price": 60,
+    "Description": "Refreshing and energizing",
+    "Type": "Beverages"
+  },
+  {
+    "Name": "Pepsi",
+    "Price": 60,
+    "Description": "Refreshing and energizing",
+    "Type": "Beverages"
+  },
+  {
+    "Name": "Garlic Breadsticks with dip",
+    "Price": 100,
+    "Description": "Your perfect pizza partner!",
+    "Type": "Beverages"
+  },
+  {
+    "Name": "Maggi",
+    "Price": 50,
+    "Description": "No description needed!",
+    "Type": "Sliders"
+  }
+]

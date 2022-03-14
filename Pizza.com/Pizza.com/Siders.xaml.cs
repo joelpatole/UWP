@@ -47,10 +47,10 @@ namespace Pizza.com
             }
         }
 
-        private void SidersMenu_Loaded(object sender, RoutedEventArgs e)
+        private async void SidersMenu_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var a = pdp.GetSidersList();
+            var a = await pdp.GetProductByCategory(Constants.ProductTypes.Sliders);
             SidersMenuList.ItemsSource = a;
             SetOrder();
 

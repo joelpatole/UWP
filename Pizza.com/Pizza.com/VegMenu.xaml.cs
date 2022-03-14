@@ -50,9 +50,9 @@ namespace Pizza.com
             }
         }
 
-        private void VegMenu_Loaded(object sender, RoutedEventArgs e)
+        private async void VegMenu_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = pdp.GetVegPizzaList(); 
+            var a = await pdp.GetProductByCategory(Constants.ProductTypes.VegPizza); 
             VegMenuList.ItemsSource = a;
             SetOrder();
         }

@@ -91,8 +91,10 @@ namespace Pizza.com
 
         private void goToBill_Click(object sender, RoutedEventArgs e)
         {
+           
+            
             this.Frame.Navigate(typeof(Bill));
-
+            
         }
     }
 }

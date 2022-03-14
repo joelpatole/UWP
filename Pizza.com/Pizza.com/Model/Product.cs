@@ -20,17 +20,14 @@ namespace Pizza.com.Model
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public string Pname;
-        public int Pcost;
-        public string Pdesc;
-        public Constants.ProductTypes Ptype;
+        private string Pname;
+        private int Pcost;
+        private string Pdesc;
+        private Constants.ProductTypes Ptype;
         
         //This property is used to maintain to mark item to be deleted
         public int DeleteIndex { get; set; }
-        //This property is used to maintain to mark item to be deleted
-        public int IncrementIndex { get; set; }
-        //This property is used to maintain to mark item to be deleted
-        public int DecrementIndex { get; set; }
+
 
         public Constants.ProductTypes Type 
         {

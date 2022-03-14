@@ -47,9 +47,9 @@ namespace Pizza.com
             }
         }
 
-        private void BeveragesMenu_Loaded(object sender, RoutedEventArgs e)
+        private async void BeveragesMenu_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = pdp.GetBeveragesList();
+            var a = await pdp.GetProductByCategory(Constants.ProductTypes.Beverages);
             BeveragesMenuList.ItemsSource = a;
             SetOrder();
         }
