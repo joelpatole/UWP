@@ -30,15 +30,15 @@ namespace Pizza.com.DataProvider
                 productList = new ObservableCollection<Product>();
                 productList = await LoadPizzaAsync();
             }
-            var beveragesList = productList.Select(p => p).Where(p => p.Type == productType);
-            ObservableCollection<Product> baveragesCollection = new ObservableCollection<Product>(beveragesList);
-            return baveragesCollection;
+            var ItemList = productList.Select(p => p).Where(p => p.Type == productType);
+            ObservableCollection<Product> ItemCollection = new ObservableCollection<Product>(ItemList);
+            return ItemCollection;
         }
 
         public async Task<ObservableCollection<Product>> LoadPizzaAsync()
         {
             var storageFile = await _localFolder.TryGetItemAsync(_customersFileName) as StorageFile;
-            //C:\Users\Joel\AppData\Local\Packages\e5cb593e-9ffe-42d8-bf5b-8578d007eedf_ka9b83fa3fse2\LocalState\customers.json
+            //C:\Users\Joel\AppData\Local\Packages\e5cb593e-9ffe-42d8-bf5b-8578d007eedf_ka9b83fa3fse2\LocalState\pizza.json
             ObservableCollection<Product> productList = new ObservableCollection<Product>();
 
             if (storageFile == null)

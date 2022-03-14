@@ -91,8 +91,7 @@ namespace Pizza.com
 
         private void goToBill_Click(object sender, RoutedEventArgs e)
         {
-           
-            
+            productCart.GetCartItems().Clear();
             this.Frame.Navigate(typeof(Bill));
             
         }
