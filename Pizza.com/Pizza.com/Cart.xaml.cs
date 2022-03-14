@@ -14,6 +14,13 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Pizza.com.Model;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Pizza.com.Model;
+using Newtonsoft.Json;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using System.Net;
+using System.Net.Mail;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,6 +37,7 @@ namespace Pizza.com
         ProductCart productCart = ProductCart.GetInstance;
         public static int totalBill;
         public static int temptotalBill;
+        MailMessage message;
         public Cart()
         {
             this.InitializeComponent();
@@ -89,11 +97,62 @@ namespace Pizza.com
             chkIsTester.IsChecked = customer?.IsTester;*/
         }
 
-        private void goToBill_Click(object sender, RoutedEventArgs e)
+        private async void goToBill_Click(object sender, RoutedEventArgs e)
         {
-            productCart.GetCartItems().Clear();
+            NotifyOwnerThroughEmail(productCart);
             this.Frame.Navigate(typeof(Bill));
             
+        }
+
+        //https://stackoverflow.com/questions/32260/sending-email-in-net-through-gmail
+        //https://stackoverflow.com/questions/5943771/c-sharp-sending-email-code-suddenly-stopped-working
+        public async Task NotifyOwnerThroughEmail(ProductCart pc)
+        {
+            var fromAddress = new MailAddress("joelpatole4@gmail.com", "pizza.com");
+            var toAddress = new MailAddress("joelpatole20@gmail.com", "John");
+            const string fromPassword = "drkfmljkawpnbmzx";
+            const string subject = "Order Detials";
+            string body = "<H1>Pizza.com: Order Details <H1><br> <H3>";
+
+            var prodList = productCart.GetCartItems();
+            foreach (var item in prodList)
+            {
+                body += item.Product.Name + " - " + item.Count + "<br>";
+            }
+            body += "<H3>";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            smtp.SendCompleted += Smtp_SendCompleted;
+            message = new MailMessage(fromAddress, toAddress);
+            message.Subject = subject;
+            message.Body = body;
+            message.IsBodyHtml = true;
+            
+                try 
+                {
+                    smtp.SendAsync(message, null);
+                    //smtp.SendMailAsync(message);
+                    //smtp.Dispose;
+                }
+                catch (Exception e) 
+                {
+                    body = "";
+                }
+        }
+
+        private void Smtp_SendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            var a = e.Error;
+            productCart.GetCartItems().Clear();
+            message.Dispose();
         }
     }
 }

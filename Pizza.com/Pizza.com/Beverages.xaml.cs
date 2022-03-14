@@ -161,7 +161,7 @@ namespace Pizza.com
         //        {
         //            if (po.Count > 1)
         //                po.Count--;
-        //            else
+        //            else     
         //            {
         //                var dialog = new MessageDialog("Minimum order count is 1");
         //                await dialog.ShowAsync();
