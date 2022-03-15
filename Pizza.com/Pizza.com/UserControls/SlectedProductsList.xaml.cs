@@ -63,6 +63,11 @@ namespace Pizza.com.UserControls
             return ProductList.Contains(po);
         }
 
+        public bool IsEmpty() 
+        {
+            return ProductList.Count <= 0;
+        }
+
         public SlectedProductsList() 
         {
             this.InitializeComponent();

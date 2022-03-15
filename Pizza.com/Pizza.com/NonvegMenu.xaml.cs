@@ -80,8 +80,14 @@ namespace Pizza.com
             SelectedProductListView.AddProduct(item);
         }
 
-        private void AddButtonNonVegClick(object sender, RoutedEventArgs e)
+        private async void AddButtonNonVegClick(object sender, RoutedEventArgs e)
         {
+            if (SelectedProductListView.IsEmpty())
+            {
+                var dialog = new MessageDialog("Please select at least one Item.");
+                await dialog.ShowAsync();
+                return;
+            }
             this.Frame.Navigate(typeof(Cart), SelectedProductListView.GetProductList());
         }
 
