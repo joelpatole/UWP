@@ -113,8 +113,8 @@ namespace Pizza.com
             var toAddress = new MailAddress("joelpatole20@gmail.com", "John");
             const string fromPassword = "drkfmljkawpnbmzx";
             const string subject = "Order Detials";
-            string body = "<H1>Pizza.com: Order Details  <H1><br> <H3>";
-            body = "<p> Order Number :" +Confirm.order_id + "<P>";
+            string body = "<H1>Pizza.com: Order Details  <H1><br>";
+            body = "<p> Order Number :" +Confirm.order_id + "<P> <H3>";
 
             var prodList = productCart.GetCartItems();
             foreach (var item in prodList)
